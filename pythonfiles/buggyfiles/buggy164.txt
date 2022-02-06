@@ -1,0 +1,7 @@
+def __init__(self,parent,detachbutton=True):
+ 
+         layout = QtGui.QVBoxLayout()
+         try:
+             layout.setContentsMargins(0,0,0,0)
+         except AttributeError:
+             pass

@@ -1,0 +1,8 @@
+def __init__(self, connString=None, perf='no', **kw):
+         
+         # "Case" dict to map events to handler methods
+         self.eventMap = {
+             'stampede.edge': self.edge_static,
+             'stampede.host': self.host,
+             'stampede.job.mainjob.end': self.job,
+             'stampede.job.mainjob.start': self.job,

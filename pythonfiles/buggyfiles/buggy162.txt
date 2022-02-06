@@ -1,0 +1,28 @@
+def OnVarSelected(self,*args):
+             # Restore original cursor
+             QtGui.QApplication.restoreOverrideCursor()
+ 
+     def isComplete(self):
+         return True
+ 
+     def saveData(self,mustbevalid):
+         self.saveFigureSettings()
+         return True
+ 
+     def destroy(self,destroyWindow = True,destroySubWindows = True):
+         self.figurepanel.destroy()
+         self.figurepanel = None
+         self.treestore.release()
+         self.treestore = None
+         commonqt.WizardPage.destroy(self,destroyWindow,destroySubWindows)
+ 
+     def saveFigureSettings(self):
+         if self.varpath is not None and self.figurepanel.figure.hasChanged():
+             self.result.setFigure('result/'+self.varpath,self.figurepanel.figure.properties)
+             
+     def onSaveAsDefault(self):
+         pass
+ 
+ class ConfigureReportWidget(QtGui.QWidget):
+     def __init__(self,parent,result,rep):
+         QtGui.QWidget.__init__(self,parent)

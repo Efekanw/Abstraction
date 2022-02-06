@@ -1,0 +1,7 @@
+def load(self, data):
+ 
+         self.msg = EMsg(msg)
+ 
+ 
+ class ExtendedMsgHdr:
+     _size = struct.calcsize("<IBHqqBqi")

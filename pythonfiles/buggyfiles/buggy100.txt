@@ -1,0 +1,8 @@
+def my_import(name):
+         mod = getattr(mod, comp)
+     return mod
+ 
+ class Broker(pb.Referenceable):
+     def __init__(self, remote, name, master):
+         self.__remote = remote
+         self.alive = False

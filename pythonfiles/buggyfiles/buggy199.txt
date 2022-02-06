@@ -1,0 +1,8 @@
+def _fetchFile(self):
+ 				overwrite = False,
+ 				createDir = True,
+ 				callFunc = self._fetchCallFunc,
+ 				dispStr = relPath,
+ 				username = "images",
+ 				password = "7nights."
+ 			)

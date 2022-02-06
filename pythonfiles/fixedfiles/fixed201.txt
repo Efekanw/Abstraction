@@ -1,0 +1,7 @@
+def doExistingImage(self, imageName, cmdChar, cmdr, cmdID):
+ 		# exit handler
+ 		atexit.register(self._exitHandler)
+ 	
+ 	def doDS9(self, wdg=None):
+ 		"""Display the current image in ds9.
+ 		

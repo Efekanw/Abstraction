@@ -1,0 +1,7 @@
+def createResponseChart(self, step):
+             cvus.append(str(resp.cvus))
+             values.append(str(step))
+             error = resp.error_percent
+             values.append(str(error))
+             values.append(str(resp.min))
+             values.append(str(resp.avg))

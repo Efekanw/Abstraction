@@ -1,0 +1,9 @@
+def handler(*args, **kwargs):
+             obj = None
+             try:
+                 obj = get_func(**get_kwargs)
+             except Exception as e:
+                 if 'notfound' not in e.__class__.__name__.lower():
+                     raise e
+             if obj is None:
+ ++ b/savanna/tests/unit/service/test_validation.py

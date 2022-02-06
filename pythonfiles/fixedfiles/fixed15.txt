@@ -1,0 +1,28 @@
+def get_default_config_dir(filename=None):
+     :rtype: string
+ 
+     """
+ 
+     if windows_check():
+         def save_config_path(resource):
+             appDataPath = os.environ.get("APPDATA")
+             if not appDataPath:
+                 import _winreg
+                 hkey = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders")
+                 appDataReg = _winreg.QueryValueEx(hkey, "AppData")
+                 appDataPath = appDataReg[0]
+                 _winreg.CloseKey(hkey)
+             return os.path.join(appDataPath, resource)
+     else:
+         from xdg.BaseDirectory import save_config_path
+     if not filename:
+         filename = ''
+     try:
+         return os.path.join(save_config_path("deluge"), filename)
+     except OSError, e:
+         log.error("Unable to use default config directory, exiting... (%s)", e)
+         sys.exit(1)
+ 
+ def get_default_download_dir():
+     """
+ ++ b/deluge/main.py

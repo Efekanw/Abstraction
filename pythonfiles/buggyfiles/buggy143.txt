@@ -1,0 +1,9 @@
+def is_gap(self):
+     def is_n(self):
+         return True
+ 
+     def call_concensus(self, record):
+         extended_code = "N"
+         try:
+             sample_ad = set([str(c) for c in record.ALT] + [record.REF])
+ -- a/scripts/vcfs2fasta.py

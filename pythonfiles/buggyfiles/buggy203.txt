@@ -1,0 +1,8 @@
+def doExpose(self, wdg=None):
+ 		
+ 	def doFindStars(self, *args):
+ 		if not self.dispImObj:
+ 			raise RuntimeError("No guide image")
+ 
+ 		thresh = self.threshWdg.getNum()
+ 		

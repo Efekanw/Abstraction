@@ -1,0 +1,42 @@
+def _NormalizedCostTarget(inst):
+              hist = inst.energy_history
+              lg = len(hist)
+              #XXX: throws error when hist is shorter than generations ?
+              return lg > generations and (hist[-generations]-hist[-1]) <= 0
+          if not generations and fval == None: return True
+          return abs(inst.bestEnergy-fval) <= abs(tolerance * fval)
+     return _NormalizedCostTarget
+ 
+ def VTRChangeOverGeneration(ftol = 0.005, gtol = 1e-6, generations = 30):
+     """change in cost is < gtol over a number of generations,
+ or cost of last iteration is < ftol:
+ 
+ cost[-g] - cost[-1] <= gtol, where g=generations *or* cost[-1] <= ftol."""
+     def _VTRChangeOverGeneration(inst):
+          hist = inst.energy_history
+          lg = len(hist)
+          #XXX: throws error when hist is shorter than generations ?
+          return (lg > generations and (hist[-generations]-hist[-1]) <= gtol)\
+                 or ( hist[-1] <= ftol )
+     return _VTRChangeOverGeneration
+ 
+ def PopulationSpread(tolerance = 1e-6):
+     """normalized absolute deviation from best candidate is < tolerance:
+ 
+ abs(params - params[0]) <= tolerance"""
+     def _PopulationSpread(inst):
+          sim = numpy.array(inst.population)
+          #if not len(sim[1:]):
+          #    print "Warning: Invalid termination condition (nPop < 2)"
+          #    return True
+          return numpy.all(abs(sim - sim[0]) <= abs(tolerance * sim[0]))
+     return _PopulationSpread
+ 
+ def GradientNormTolerance(tolerance = 1e-5, norm = Inf): 
+     """gradient norm is < tolerance, given user-supplied norm:
+ 
+ sum( abs(gradient)**norm )**(1.0/norm) <= tolerance"""
+     def _GradientNormTolerance(inst):
+         try:
+             gfk = inst.gfk #XXX: need to ensure that gfk is an array ?
+ ++ b/mystic/test_termination.py

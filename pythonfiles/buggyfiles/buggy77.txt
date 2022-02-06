@@ -1,0 +1,7 @@
+def openWindow( self ):
+ 		# initializes Add to Board button
+ 		# --------------------------------------------
+ 		self.checkBoardExists()
+ 
+ 	def checkBoardExists( self ):
+ 		if self.theSession.getWindow('BoardWindow').exists():

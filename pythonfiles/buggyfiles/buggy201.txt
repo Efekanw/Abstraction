@@ -1,0 +1,29 @@
+def doExistingImage(self, imageName, cmdChar, cmdr, cmdID):
+ 		# exit handler
+ 		atexit.register(self._exitHandler)
+ 	
+ 	def doCenter(self, wdg=None):
+ 		"""Center up on the selected star.
+ 		"""
+ 		if not self.dispImObj:
+ 			raise RuntimeError("No guide image")
+ 		if not self.dispImObj.selDataColor:
+ 			raise RuntimeError("No star selected")
+ 		
+ 		starData, color = self.dispImObj.selDataColor
+ 		pos = starData[2:4]
+ 		rad = starData[6]
+ 		cmdStr = "guide on imgFile=%r centerOn=%.2f,%.2f noGuide cradius=%.1f %s" % \
+ 			(self.dispImObj.imageName, pos[0], pos[1], rad, self.getExpArgStr())
+ 		if not _LocalMode:
+ 			cmdVar = RO.KeyVariable.CmdVar(
+ 				actor = self.actor,
+ 				cmdStr = cmdStr,
+ 			)
+ 			self.statusBar.doCmd(cmdVar)
+ 		else:
+ 			print cmdStr
+ 	
+ 	def doDS9(self, wdg=None):
+ 		"""Display the current image in ds9.
+ 		

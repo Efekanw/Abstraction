@@ -1,0 +1,14 @@
+def __init__(self, login, password, url):
+ 	def encode_element(self, el):
+ 		return unicode(el).encode('ascii', 'replace')
+ 
+ 	# Use the Google-compliant datetime format.
+ 	def format_datetime(self, datetime):
+ 		try:
+ 			ret = time.strftime("%Y-%m-%dT%H:%M:%S.000Z", datetime.utctimetuple())
+ 			return ret
+ 		except:
+ 			return datetime
+ 
+ 	# Use the Google-compliant alarm format.
+ 	def format_alarm(self, alarm):

@@ -1,0 +1,23 @@
+def __get_dependency_id_list(self, extension):
+         return self.__get_dependency_id_list_from_id(extension.get_id())
+ 
+ 
+     def __get_dependency_list_from_id(self, extension_id):
+         assert extension_id >= 0
+         id_list = self.__get_dependency_id_list_from_id(extension_id)
+         return self._acldb.get_resource_list_from_id_list(id_list, 'Extension')
+ 
+ 
+     def __get_dependency_list(self, extension):
+         assert extension is not None
+         return self.__get_dependency_list_from_id(extension.get_id())
+ 
+ 
+     def __load_dependency_list(self, extension):
+         assert extension is not None
+         list = self.__get_dependency_list(extension)
+         for dependency in list:
+             extension.add_dependency(dependency.get_handle())
+         return True
+ 
+ 

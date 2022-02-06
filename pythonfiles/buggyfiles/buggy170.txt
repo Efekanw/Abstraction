@@ -1,0 +1,15 @@
+def ical2gcal(self, e, dt):
+ 				# Recurring event.
+ 				recurrence_data = ('DTSTART;VALUE=DATE:%s\r\n'
+ 					+ 'DTEND;VALUE=DATE:%s\r\n'
+ 					+ 'RRULE:%s\r\n') % (event['start'], event['end'], event['rrule'])
+ 				e.recurrence = gdata.calendar.Recurrence(text=recurrence_data)
+ 			else:
+ 				# Single-occurrence event.
+ 				if len(e.when) > 0:
+ 					e.when[0] = gdata.calendar.When(start_time=event['start'], end_time=event['end'])
+ 				else:
+ 					e.when.append(gdata.calendar.When(start_time=event['start'], end_time=event['end']))
+ 				if event.has_key('alarm'):
+ 					# Set reminder.
+ 					for a_when in e.when:

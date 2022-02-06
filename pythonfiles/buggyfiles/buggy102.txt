@@ -1,0 +1,7 @@
+def remote_update(self, status, domain, domain_status):
+                 self.master.statistics["domains"]["lost"].remove(domain)
+ 
+ class ScrapyPBClientFactory(pb.PBClientFactory):
+     def __init__(self, master, nodename):
+         pb.PBClientFactory.__init__(self)
+         self.master = master

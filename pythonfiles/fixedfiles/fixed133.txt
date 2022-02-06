@@ -1,0 +1,9 @@
+def get_schema(self):
+         Returns:
+           - Schema: The schema as an object.
+         """
+         return Schema(self._mapping, self._defaults,
+                       drop_unknown=self._drop)
+ 
+ class Schema(nllog.DoesLogging):
+     """Thin wrapper around a mapping that specifies functions

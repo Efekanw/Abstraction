@@ -1,0 +1,8 @@
+def setMode(self, wdg=None, isTemp=False):
+ #		elif self.mode == _ModeLevels:
+ #			self.cnv["cursor"] = "circle"
+ #		elif self.mode == _ModeNormal:
+ #		self.cnv["cursor"] = "tcross"
+ 
+ 	def modeStart(self, evt):
+ 		"""Mouse down for current mode (whatever that might be).

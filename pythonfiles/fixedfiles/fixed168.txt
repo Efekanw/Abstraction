@@ -1,0 +1,28 @@
+def __init__(self, login, password, url):
+ 	def encode_element(self, el):
+ 		return unicode(el).encode('ascii', 'replace')
+ 
+ 	# Use the Google-compliant datetime format for single events.
+ 	def format_datetime(self, date):
+ 		try:
+ 			if re.match(r'^\d{4}-\d{2}-\d{2}$', str(date)):
+ 				return str(date)
+ 			else:
+ 				return str(time.strftime("%Y-%m-%dT%H:%M:%S.000Z", date.utctimetuple()))
+ 		except Exception, e:
+ 			print type(e), e.args, e
+ 			return str(date)
+ 
+ 	# Use the Google-compliant datetime format for recurring events.
+ 	def format_datetime_recurring(self, date):
+ 		try:
+ 			if re.match(r'^\d{4}-\d{2}-\d{2}$', str(date)):
+ 				return str(date).replace('-', '')
+ 			else:
+ 				return str(time.strftime("%Y%m%dT%H%M%SZ", date.utctimetuple()))
+ 		except Exception, e:
+ 			print type(e), e.args, e
+ 			return str(date)
+ 
+ 	# Use the Google-compliant alarm format.
+ 	def format_alarm(self, alarm):

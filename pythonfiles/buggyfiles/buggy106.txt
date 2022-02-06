@@ -1,0 +1,8 @@
+def update_nodes(self):
+             
+     def add_node(self, cworker, name):
+         """Add node given its node"""
+         node = Broker(cworker, name, self)
+         self.nodes[name] = node
+         log.msg("Added cluster worker %s" % name)
+ 

@@ -1,0 +1,9 @@
+def refresh_nodes_smgr(self):
+         for aggregate in aggregates:
+             try:
+                 # get the rspec from the aggregate
+                 agg_rspec = aggregates[aggregate].resources(credential)
+                 # extract the netspec from each aggregates rspec
+                 rspec.parseString(agg_rspec)
+                 networks.extend([{'NetSpec': rspec.getDictsByTagName('NetSpec')}])
+ -- a/geni/util/slices.py

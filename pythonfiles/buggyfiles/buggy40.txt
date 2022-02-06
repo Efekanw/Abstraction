@@ -1,0 +1,7 @@
+def __init__(self, filepath, conf, db_cur=None, db_conn=None):
+ 			self.db_cur = db_cur
+ 
+ 		ext = os.path.splitext(self.filepath)[1]
+ 		if ext in self.datatypes:
+ 			self.handler = self.datatypes[ext](conf=conf, file=filepath)
+ 		else:

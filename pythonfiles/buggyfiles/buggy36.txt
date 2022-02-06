@@ -1,0 +1,7 @@
+def createMonitorChart(self, host):
+             f.write(' '.join([str(item) for item in line]) + '\n')
+         f.close()
+ 
+         lines = []
+         lines.append('set output "%s"' % image_path)
+         lines.append('set terminal png size ' + self.getChartSizeTmp(cvus))

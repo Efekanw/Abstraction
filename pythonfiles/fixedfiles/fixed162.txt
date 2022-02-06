@@ -1,0 +1,44 @@
+def OnVarSelected(self,*args):
+             # Restore original cursor
+             QtGui.QApplication.restoreOverrideCursor()
+ 
+     def destroy(self,destroyWindow = True,destroySubWindows = True):
+         self.figurepanel.destroy()
+         self.figurepanel = None
+         self.treestore.release()
+         self.treestore = None
+             
+ class PageVisualize(commonqt.WizardPage):
+     
+     def __init__(self,parent=None):
+         commonqt.WizardPage.__init__(self, parent)
+         
+         self.result = parent.getProperty('result')
+         self.vizwidget = VisualizeWidget(self.result,parent=self)
+         
+         layout = QtGui.QHBoxLayout()
+         try:
+             # Try-except because versions of Qt4 < 4.3 did not support this attribute
+             layout.setContentsMargins(0,0,0,0)
+         except AttributeError:
+             pass
+         layout.addWidget(self.vizwidget)
+         self.setLayout(layout)
+ 
+     def isComplete(self):
+         return True
+ 
+     def saveData(self,mustbevalid):
+         self.vizwidget.saveFigureSettings()
+         return True
+             
+     def onSaveAsDefault(self):
+         pass
+ 
+     def destroy(self,destroyWindow = True,destroySubWindows = True):
+         self.vizwidget.destroy()
+         commonqt.WizardPage.destroy(self,destroyWindow,destroySubWindows)
+ 
+ class ConfigureReportWidget(QtGui.QWidget):
+     def __init__(self,parent,result,rep):
+         QtGui.QWidget.__init__(self,parent)

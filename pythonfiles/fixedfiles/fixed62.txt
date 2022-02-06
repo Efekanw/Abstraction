@@ -1,0 +1,27 @@
+def __init__(self, msg, data=None, extended=False):
+     def serialize(self):
+         return self.header.serialize() + self.body.serialize()
+ 
+     def __repr__(self):
+         return "<Msg %s>" % repr(self.msg)
+ 
+     def __str__(self):
+         rows = ["Msg"]
+ 
+         header = str(self.header)
+         if header:
+             rows.append("-------------- header --")
+             rows.append(header)
+ 
+         body = str(self.body)
+         if body:
+             rows.append("---------------- body --")
+             rows.append(body)
+ 
+         if len(rows) == 1:
+             rows[0] += " (empty)"
+ 
+         return '\n'.join(rows)
+ 
+ 
+ cmsg_lookup = None

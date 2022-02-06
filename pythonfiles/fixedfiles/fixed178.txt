@@ -1,0 +1,16 @@
+def UnitTest6():
+ 
+ 
+ #================================================================
+ def UnitTest7(max_features = 15):
+ 	"""try to find the number of features at which the predicted and ground truth values
+ 	correllates most"""
+ 
+ 	ts = ContinuousTrainingSet.NewFromFitFile( "/Users/chris/projects/eckley_pychrm_interp_val_as_function_of_num_features/FacingL7class.fit" )
+ 	ts.Normalize()
+ 	#ts = ContinuousTrainingSet.NewFromFileOfFiles( "/Users/chris/projects/eckley_pychrm_interp_val_as_function_of_num_features/FacingL7class.fit" )
+ 	#ts.PickleMe()
+ 	#ts = ContinuousTrainingSet.NewFromPickleFile( "/Users/chris/src/fake_signatures/classes/continuous_data_set.fof.fit.pickled" )
+ 	weights = ContinuousFeatureWeights.NewFromTrainingSet( ts )
+ 
+ 	split_results = []

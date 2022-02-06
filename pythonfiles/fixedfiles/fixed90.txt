@@ -1,0 +1,10 @@
+def register_extension(self, extension):
+             best = self.get_extension_from_descriptor(descriptor)
+ 
+             # Retrieve a list of all dependencies of that dependency.
+             best_id = best.get_id()
+             list    = self.__get_dependency_id_list_from_id(best_id)
+             list.append(best_id)
+ 
+             # Add a link to all of the dependencies.
+             for id in list:

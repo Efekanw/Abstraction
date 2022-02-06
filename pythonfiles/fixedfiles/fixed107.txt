@@ -1,0 +1,8 @@
+def remove_node(self, nodename):
+         raise NotImplemented
+ 
+     def schedule(self, domains, spider_settings=None, priority=DEFAULT_PRIORITY):
+         """Schedule the domains passed"""
+         i = 0
+         for p in self.pending:
+             if p['priority'] <= priority:

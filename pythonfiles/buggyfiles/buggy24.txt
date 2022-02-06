@@ -1,0 +1,7 @@
+def createTestChart(self):
+             cvus.append(str(test.cvus))
+             values.append(str(test.tps))
+             error = test.error_percent
+             values.append(str(error))
+             lines.append(' '.join(values))
+         f = open(data_path, 'w')

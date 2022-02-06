@@ -1,0 +1,7 @@
+def test_ioctl_mutate(self):
+         self.assertEquals(r, 0)
+         self.assert_(rpgrp in ids, "%s not in %s" % (rpgrp, ids))
+ 
+ def test_main():
+     run_unittest(IoctlTests)
+ 

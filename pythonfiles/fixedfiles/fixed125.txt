@@ -1,0 +1,11 @@
+def task(self, linedata):
+         """
+         tsk = self.linedataToObject(linedata, Task())
+         tsk.job_id = self.jobIdFromUnique(tsk)
+         if tsk.job_id == None:
+             self.log.error('task',
+                 msg='Could not determine job_id for task: %s' % js)
+             return
+         del tsk.wf_uuid, tsk.name, tsk.job_submit_seq, tsk.ts
+         
+         self.log.debug('task', msg=tsk)

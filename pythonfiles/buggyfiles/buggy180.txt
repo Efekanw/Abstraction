@@ -1,0 +1,8 @@
+def show_cron_menu():
+             count = count + 1
+             print("   #### " + str(count) + " - " + x)
+         option = raw_input("Select script to add;")
+         job = autorun_path + os.listdir(autorun_path)[int(option)]
+         job = cron.new(command=job, comment='Pigrow')
+         job.every_reboot()
+         cron.write()

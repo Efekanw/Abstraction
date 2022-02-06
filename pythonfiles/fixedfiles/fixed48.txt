@@ -1,0 +1,8 @@
+def _LoadingFailed(self, request_id, params):
+     self._FinalizeRequest(request_id)
+ 
+   def _FinalizeRequest(self, request_id):
+     (request, status) = self._requests_in_flight[request_id]
+     assert status == RequestTrack._STATUS_FINISHED
+     del self._requests_in_flight[request_id]
+ ++ b/tools/android/loading/request_track_unittest.py

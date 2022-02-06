@@ -1,0 +1,15 @@
+def get_version_list_from_handle(self, handle):
+         return children
+ 
+ 
+     def link_extension_to_callback(self, extension_id, callback):
+         """
+         Associates the given extension with the given callback.
+ 
+         @type  extension_id: int
+         @param extension_id: The id of the extension to associate.
+         @type  callback: Callback
+         @param callback: The callback to associate.
+         @rtype:  int
+         @return: The id of the callback, or <0 if an error occured.
+         """

@@ -1,0 +1,19 @@
+def __init__(self, procman, domain, logfile=None, spider_settings=None):
+         self.status = "starting"
+         self.pid = -1
+         self.env = {}
+         #We conserve original setting format for info purposes (avoid lots of unnecesary "SCRAPY_")
+         self.scrapy_settings = spider_settings or {}
+         self.scrapy_settings.update({'LOGFILE': self.logfile, 'CLUSTER_WORKER_ENABLED': 0, 'CLUSTER_CRAWLER_ENABLED': 1, 'WEBCONSOLE_ENABLED': 0})
+         pickled_settings = pickle.dumps(self.scrapy_settings)
+         self.env["SCRAPY_PICKLED_SETTINGS_TO_OVERRIDE"] = pickled_settings
+         self.env["PYTHONPATH"] = ":".join(sys.path)#this is need so this crawl process knows where to locate local_scrapy_settings.
+ 
+     def __str__(self):
+         return "<ScrapyProcess domain=%s, pid=%s, status=%s>" % (self.domain, self.pid, self.status)
+ 
+     def as_dict(self):
+         return {"domain": self.domain, "pid": self.pid, "status": self.status, "settings": self.scrapy_settings, "logfile": self.logfile, "starttime": self.start_time}
+ 
+     def connectionMade(self):
+         self.pid = self.transport.pid

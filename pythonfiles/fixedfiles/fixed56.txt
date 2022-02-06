@@ -1,0 +1,13 @@
+def _parse_message(self, message):
+             self.dispatch_message(emsg, msg)
+ 
+     def dispatch_message(self, emsg, msg):
+         if self.verbose_debug:
+             logger.debug("Incoming: %s\n%s" % (repr(msg), str(msg)))
+         else:
+             logger.debug("Incoming: %s", repr(msg))
+ 
+ 
+         if emsg in self.registered_callbacks:
+             for callback in list(self.registered_callbacks[emsg]):
+                 if isinstance(callback, event.AsyncResult):

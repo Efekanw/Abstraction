@@ -1,0 +1,18 @@
+def update_master(self, domain, domain_status):
+             deferred = self.__master.callRemote("update", self.status(), domain, domain_status)
+         except pb.DeadReferenceError:
+             self.__master = None
+             log.msg("Lost connection to master", log.ERROR)
+         else:
+             deferred.addCallbacks(callback=lambda x: x, errback=lambda reason: log.msg(reason, log.ERROR))
+         
+     def remote_set_master(self, master):
+         """Set the master for this worker"""
+         self.__master = master
+         return self.status()
+ 
+     def remote_stop(self, domain):
+         """Stop a running domain"""
+         if domain in self.running:
+             proc = self.running[domain]
+             log.msg("ClusterWorker: Sending shutdown signal to domain=%s, pid=%d" % (domain, proc.pid))

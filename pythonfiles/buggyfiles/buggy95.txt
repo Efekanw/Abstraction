@@ -1,0 +1,7 @@
+def unregister_extension_test(self, db):
+             db.register_extension(extension)
+             assert db.unregister_extension(extension)
+             
+         def runTest(self):
+             # Read config.
+             cfg = RawConfigParser()

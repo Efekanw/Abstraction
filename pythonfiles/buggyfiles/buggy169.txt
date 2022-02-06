@@ -1,0 +1,10 @@
+def ical2gcal(self, e, dt):
+ 		if hasattr(dt, 'rrule'):
+ 			event['rrule'] = self.encode_element(dt.rrule.value)
+ 		if hasattr(dt, 'dtstart'):
+ 			event['start'] = self.format_datetime(dt.dtstart.value)
+ 		if hasattr(dt, 'dtend'):
+ 			event['end'] = self.format_datetime(dt.dtend.value)
+ 		if hasattr(dt, 'valarm'):
+ 			event['alarm'] = self.format_alarm(self.encode_element(dt.valarm.trigger.value))
+ 

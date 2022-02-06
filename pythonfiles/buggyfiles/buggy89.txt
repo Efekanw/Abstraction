@@ -1,0 +1,8 @@
+def register_extension(self, extension):
+                 dependency_version  = 0
+ 
+             # Add the dependency request into the database.
+             table  = self._table_map['extension_dependency_map']
+             query  = table.insert()
+             result = query.execute(extension_id        = extension.get_id(),
+                                    dependency_handle   = dependency_handle,

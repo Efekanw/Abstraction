@@ -1,0 +1,41 @@
+def __init__(self,parent=None):
+     def isComplete(self):
+         return True
+ 
+ def visualizeResult(result):
+     # Create the application and enter the main message loop.
+     createQApp = QtGui.QApplication.startingUp()
+     if createQApp:
+         app = QtGui.QApplication([' '])
+     else:
+         app = QtGui.qApp
+ 
+     dialog = QtGui.QDialog()
+ 
+     visualizer = VisualizeWidget(result,parent=dialog)
+ 
+     pm = QtGui.QPixmap(os.path.join(core.common.getDataRoot(),'logo.png'),'PNG')
+     piclabel = QtGui.QLabel(dialog)
+     piclabel.setPixmap(pm)
+     piclabel.setMinimumWidth(20)
+ 
+     layout = QtGui.QVBoxLayout()
+     layout.addWidget(piclabel)
+     layout.addWidget(visualizer)
+     layout.setSpacing(0)
+     try:
+         # Try-except because versions of Qt4 < 4.3 did not support this attribute
+         layout.setContentsMargins(0,0,0,0)
+     except AttributeError:
+         pass
+     dialog.setLayout(layout)
+ 
+     dialog.setWindowTitle('Visualize results')
+     dialog.show()
+     
+     ret = app.exec_()
+ 
+ def main():
+     # Debug info
+     print 'Python version: '+str(sys.version_info)
+ ++ b/gui.py/xmlplot/gui_qt4.py

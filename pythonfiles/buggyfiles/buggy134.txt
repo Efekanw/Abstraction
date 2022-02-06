@@ -1,0 +1,17 @@
+def event(self, event):
+         if self.mapping.has_key(event_name):
+             type_map = self.mapping[event_name]
+             for key in type_map:
+                 # If present, apply conversion
+                 if key in event:
+                     if self._trace:
+                         self.log.trace("convert.start", key=key)
+                     try:
+                         event[key] = type_map[key](event[key])                        
+                     except ValueError, err:
+                         if self._trace:
+                             self.log.trace("convert.end", key=key, status=-1, msg=err)
+                         raise ValueError("parsing '%s': %s" % (key, err))
+                     if self._trace:
+                         self.log.trace("convert.end", key=key, status=0)
+ -- a/lib/python/netlogger/util.py

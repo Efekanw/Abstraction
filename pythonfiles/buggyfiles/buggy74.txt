@@ -1,0 +1,8 @@
+def do_formsemestre_recapcomplet(self,REQUEST,formsemestre_id,format='html'):
+             for modimpl in modimpls:
+                 if modimpl['module']['ue_id'] == ue['ue_id']:
+                     l.append(fmt_note(nt.get_mod_moy(modimpl['moduleimpl_id'])[0])) # moyenne du module
+         F.append(l)
+         # Generation table au format demandé
+         if format == 'html':
+             # Table format HTML

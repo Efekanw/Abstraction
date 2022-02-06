@@ -1,0 +1,9 @@
+def main():
+ 
+                     elif extended_code == "-":
+                         pos_stats[record.CHROM][record.POS]["-"] += 1
+ #                     else:
+ #                         print "Good mixture %s: %i (%s)" % (sample_name, record.POS, extended_code)
+ 
+                     # Save the extended code of the SNP.
+                     all_data[record.CHROM][sample_name][record.POS] = extended_code

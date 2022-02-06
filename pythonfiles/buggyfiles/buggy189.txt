@@ -1,0 +1,5 @@
+def step_engine(self, init):
+ 		# all done, clean up and exit.
+ 		self.complete(0)
+ 
+ -- a/bin/test.py

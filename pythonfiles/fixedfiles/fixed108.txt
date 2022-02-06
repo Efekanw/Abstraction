@@ -1,0 +1,8 @@
+def schedule(self, domains, spider_settings=None, priority=DEFAULT_PRIORITY):
+                 self.pending.insert(i, {'domain': domain, 'settings': final_spider_settings, 'priority': priority})
+ 
+     def stop(self, domains):
+         """Stop the given domains"""
+         to_stop = {}
+         for domain in domains:
+             node = self.running.get(domain, None)

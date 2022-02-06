@@ -1,0 +1,35 @@
+def event(self, event):
+         if self.mapping.has_key(event_name):
+             type_map = self.mapping[event_name]
+             for key in type_map:
+                 # Extract value. If not present, look for default value.
+                 value = None
+                 if key not in event:
+                     if key in self.defaults[event_name]:
+                         value = self.defaults[event_name][key]
+                 else:
+                     value = event[key]
+                 # If there is a value, apply conversion.
+                 if value is not None:
+                     if self._trace:
+                         self.log.trace("convert.start", key=key)
+                     fn = type_map[key]
+                     if fn is not None:
+                         try:
+                             result = fn(value)
+                         except ValueError, err:
+                             if self._trace:
+                                 self.log.trace("convert.end",
+                                                key=key, status=-1, msg=err)
+                             raise ValueError("parsing '%s': %s" % (key, err))
+                     if result is not None:
+                         event[key] = result
+                     if self._trace:
+                         self.log.trace("convert.end", key=key, status=0)
+             # Drop unknown by walking event
+             if self.drop_unknown:
+                 for ekey in event.keys():
+                     if ekey != 'event' and ekey != 'ts' and \
+                            ekey not in type_map:
+                         del event[ekey]
+ ++ b/lib/python/netlogger/util.py

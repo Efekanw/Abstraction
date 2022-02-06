@@ -1,0 +1,15 @@
+def __characters(request, out, known):
+         out['characters'][cskill['character']]['details']['total_sp'] = \
+             cskill['total_sp']
+ 
+     # and finaly add in all the characters we puulled out of the cache earleir
+     for char_id, char in cached_chars.items():
+         out['characters'][char_id] = char
+ 
+         if 'details' in char.keys():
+             ship_item_ids.add(char['details']['ship_item_id'])
+ 
+ 
+     out['ships'] = {
+         pk: ship.name for pk, ship in
+         Item.objects.in_bulk(

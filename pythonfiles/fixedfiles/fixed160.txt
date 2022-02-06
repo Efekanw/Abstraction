@@ -1,0 +1,15 @@
+def saveData(self,mustbevalid):
+         self.owner.setProperty('scenario',res.scenario.addref())
+         return True
+ 
+ class VisualizeWidget(QtGui.QWidget):
+     def __init__(self,result,parent=None):
+         QtGui.QWidget.__init__(self,parent)
+ 
+         self.varpath = None
+         self.varname = None
+         self.result = result
+ 
+         self.treestore = self.result.getVariableTree(os.path.join(core.common.getDataRoot(),'schemas/outputtree.xml'),plottableonly=True)
+         self.model = xmlstore.gui_qt4.TypedStoreModel(self.treestore,nohide=False,novalues=True)
+ 

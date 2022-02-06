@@ -1,0 +1,7 @@
+def load(self, data):
+          _,
+          ) = struct.unpack_from("<II128sII", data)
+ 
+ 
+ class ChannelEncryptResult:
+     def __init__(self, data=None):

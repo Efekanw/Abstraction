@@ -1,0 +1,7 @@
+def __characters(request, out, known):
+         name: {'constellation': '', 'region': ''} for name in system_names
+     }
+ 
+     return out
+ 
+ 

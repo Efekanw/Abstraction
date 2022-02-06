@@ -1,0 +1,23 @@
+def __init__(self):
+ 
+         self.maxproc = settings.getint('CLUSTER_WORKER_MAXPROC')
+         self.logdir = settings['CLUSTER_LOGDIR']
+         self.running = {}#a dict domain->ScrapyProcessControl 
+         self.crawlers = {}#a dict pid->scrapy process remote pb connection
+         self.starttime = datetime.datetime.utcnow()
+         port = settings.getint('CLUSTER_WORKER_PORT')
+         scrapyengine.listenTCP(port, pb.PBServerFactory(self))
+         log.msg("PYTHONPATH: %s" % repr(sys.path))
+ 
+     def status(self, rcode=0, rstring=None):
+         status = {}
+         status["running"] = [ self.running[k].as_dict() for k in self.running.keys() ]
+         status["starttime"] = self.starttime
+         status["timestamp"] = datetime.datetime.utcnow()
+         status["maxproc"] = self.maxproc
+         status["loadavg"] = os.getloadavg()
+         status["logdir"] = self.logdir
+         status["callresponse"] = (rcode, rstring) if rstring else (0, "Status Response.")
+         return status
+ 
+     def update_master(self, domain, domain_status):

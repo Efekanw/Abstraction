@@ -1,0 +1,9 @@
+def popupMenu( self, aWidget, anEvent ):
+ 				# creates submenu
+ 				aSubMenu = gtk.Menu()
+ 
+ 				#print aPluginInstance.theViewType 
+ 				# creaets menus of PluginWindow instances
+ 				aMenuItemFlag = FALSE
+ 				for aPluginInstance in self.thePluginManager.theInstanceList: 
+ -- a/osogo/MainWindow.py

@@ -1,0 +1,8 @@
+def createTestChart(self):
+         # data
+         lines = ["CUs STPS ERROR"]
+         cvus = []
+         has_error = False
+         for cycle in self.cycles:
+             if not stats[cycle].has_key('test'):
+                 continue

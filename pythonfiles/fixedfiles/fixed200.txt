@@ -1,0 +1,13 @@
+def _fetchCallFunc(self, ftpGet):
+ 				
+ 		else:
+ 			self.__del__()
+ 			self.statusBar.setMsg("Get %r failed" % self.imageName, severity = RO.Constants.sevError)
+ 			return
+ 	
+ 	def __del__(self):
+ 		"""Halt download (if any) and delete object on disk."""
+ 		if (self.state != _ImSt_Deleted) and not _LocalMode:
+ 			self.state = _ImSt_Deleted
+ 			locPath = self.getLocalPath()
+ 			if os.path.exists(locPath):

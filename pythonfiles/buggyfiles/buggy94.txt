@@ -1,0 +1,8 @@
+def link_extension_to_callback(self, extension_id, callback):
+                                callback_name = callback.get_name(),
+                                event_uri     = callback.get_event_uri())
+         assert result is not None
+         return self.db.last_insert_id
+ 
+ 
+     def get_extension_id_list_from_callback(self, callback):

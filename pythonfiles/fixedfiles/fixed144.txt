@@ -1,0 +1,61 @@
+def get_mixture(record, threshold):
+                 i = comb[0]
+                 j = comb[1]
+ 
+                 alleles = list()
+ 
+                 if 0 in comb:
+                     alleles.append(str(record.REF))
+ 
+                 if i != 0:
+                     alleles.append(str(record.ALT[i - 1]))
+                     mixture = record.samples[0].data.AD[i]
+                 if j != 0:
+                     alleles.append(str(record.ALT[j - 1]))
+                     mixture = record.samples[0].data.AD[j]
+ 
+                 ratio = float(mixture) / total_depth
+                 if ratio == 1.0:
+                     logging.debug("This is only designed for mixtures! %s %s %s %s", record, ratio, record.samples[0].data.AD, record.FILTER)
+ 
+                     if ratio not in mixtures:
+                         mixtures[ratio] = []
+                     mixtures[ratio].append(alleles.pop())
+ 
+                 elif ratio >= threshold:
+                     try:
+                         code = IUPAC_CODES[frozenset(alleles)]
+                         if ratio not in mixtures:
+                             mixtures[ratio] = []
+                             mixtures[ratio].append(code)
+                     except KeyError:
+                         logging.warn("Could not retrieve IUPAC code for %s from %s", alleles, record)
+     except AttributeError:
+         mixtures = {}
+ 
+     return mixtures
+ 
+ def print_stats(stats, total_vars):
+     for contig in stats:
+         for sample, info in stats[contig].items():
+             print "%s,%i,%i" % (sample, len(info["n_pos"]), total_vars)
+ 
+ def get_args():
+     args = argparse.ArgumentParser(description="Combine multiple VCFs into a single FASTA file.")
+ 
+     group = args.add_mutually_exclusive_group(required=True)
+     group.add_argument("--directory", "-d", help="Path to the directory with .vcf files.")
+     group.add_argument("--input", "-i", type=str, nargs='+', help="List of VCF files to process.")
+ 
+     args.add_argument("--out", "-o", required=True, help="Path to the output FASTA file.")
+ 
+     args.add_argument("--with-mixtures", type=float, help="Specify this option with a threshold to output mixtures above this threshold.")
+ 
+     args.add_argument("--column-Ns", type=float, help="Keeps columns with fraction of Ns above specified threshold.")
+ 
+     args.add_argument("--sample-Ns", type=float, help="Keeps samples with fraction of Ns above specified threshold.")
+ 
+     args.add_argument("--reference", type=str, help="If path to reference specified, then whole genome will be outputted.")
+ 
+     return args.parse_args()
+ 

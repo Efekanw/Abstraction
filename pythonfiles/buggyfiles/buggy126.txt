@@ -1,0 +1,7 @@
+def host(self, linedata):
+         self.mapHostToJob(host)
+         pass
+         
+     def noop(self, linedata):
+         """
+         @type   linedata: dict

@@ -1,0 +1,9 @@
+def __init__(self, msg, data=None, extended=False):
+     def serialize(self):
+         return self.header.serialize() + self.body.serialize()
+ 
+     def __str__(self):
+         return ''
+ 
+ 
+ cmsg_lookup = None

@@ -1,0 +1,7 @@
+def main():
+         '-DLIBCXX_INCLUDE_TESTS=OFF',
+         '-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF',
+     ])
+ 
+   if args.gcc_toolchain:
+     # Force compiler-rt tests to use our gcc toolchain (including libstdc++.so)

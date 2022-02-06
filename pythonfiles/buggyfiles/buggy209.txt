@@ -1,0 +1,12 @@
+def showSelection(self):
+ 		self.starBkgndWdg.set(starData[13])
+ 	
+ 		# enable controls
+ 		self.centerBtn.setEnable(True)
+ 		self.guideOnBtn.setEnable(True)
+ 		
+ 	def updFiles(self, fileData, isCurrent, keyVar):
+ 		#print "%s updFiles(fileData=%r; isCurrent=%r)" % (self.actor, fileData, isCurrent)
+ 		if not isCurrent:
+ 			return
+ 		

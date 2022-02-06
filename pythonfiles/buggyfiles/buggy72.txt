@@ -1,0 +1,13 @@
+def _isdst(self, dt):
+ try:
+     from pytz import all_timezones, timezone
+ 
+     def get_timezone(tzname):
+         """Fetch timezone instance by name or return `None`"""
+         try:
+             return timezone(tzname)
+         except KeyError:
+             fixedzone = _tzmap.get(tzname)
+             if fixedzone:
+                 offset = fixedzone.utcoffset(None)
+ -- a/trac/util/tests/__init__.py

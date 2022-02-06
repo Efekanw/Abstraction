@@ -1,0 +1,11 @@
+def step_engine(self, init):
+ 		# all done, clean up and exit.
+ 		self.complete(0)
+ 
+ 	def record(self, msg):
+ 		print msg
+ 		status = self.resultdir + "/status"
+ 		fd = file(status, "a")
+ 		fd.write(msg)
+ 		fd.close()
+ ++ b/bin/test.py

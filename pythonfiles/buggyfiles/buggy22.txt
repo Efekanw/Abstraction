@@ -1,0 +1,12 @@
+def getChartSize(self, cvus):
+         """Compute the right size lenght depending on the number of cvus."""
+         size = list(self.chart_size)
+         len_cvus = len(cvus)
+         if len_cvus > 7:
+             size = list(self.big_chart_size)
+             size[0] = min(800, 50 * len(cvus))
+         return tuple(size)
+ 
+     def prepareReportDirectory(self):
+         """Create a folder to save the report."""
+ -- a/funkload/ReportRenderHtmlGnuPlot.py

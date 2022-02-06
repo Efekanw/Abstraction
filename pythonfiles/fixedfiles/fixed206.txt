@@ -1,0 +1,19 @@
+def dragStart(self, evt):
+ 		)
+ 	
+ 	def dragContinue(self, evt):
+ 		if self.inCtrlClick:
+ 			return
+ 		if not self.gim.isNormalMode():
+ 			return
+ 		newPos = self.gim.cnvPosFromEvt(evt)
+ 		self.gim.cnv.coords(self.dragRect, self.dragStart[0], self.dragStart[1], newPos[0], newPos[1])
+ 	
+ 	def dragEnd(self, evt):
+ 		if self.inCtrlClick:
+ 			self.inCtrlClick = False
+ 			return
+ 
+ 		if not self.gim.isNormalMode():
+ 			return
+ 

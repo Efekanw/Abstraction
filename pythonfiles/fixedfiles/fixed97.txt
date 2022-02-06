@@ -1,0 +1,9 @@
+def query_cache(self, sql, params=None, age=60, limit=0, distincton=""):
+         without doing any caching and is equivalent to Database.query()
+         """
+         if not CACHE_COMMON_QUERIES: return self.query(sql, params=params, limit=limit)
+         cache_key = utils.md5_hash("%s:%s:%s" % (self.database, sql, params))
+         results = cachemem.get(cache_key)
+         if results is not None:
+             return results
+ ++ b/src/i18n.py

@@ -1,0 +1,17 @@
+def send_message(self, message):
+         if not isinstance(message, (Msg, MsgProto)):
+             raise ValueError("Expected Msg or MsgProto, got %s" % message)
+ 
+         if self.verbose_debug:
+             logger.debug("Outgoing: %s\n%s" % (repr(message), str(message)))
+         else:
+             logger.debug("Outgoing: %s", repr(message))
+ 
+         data = message.serialize()
+ 
+         if self.key:
+             data = crypto.encrypt(data, self.key)
+ 
+         self.connection.put_message(data)
+ 
+     def _recv_messages(self):

@@ -1,0 +1,8 @@
+def _parse_message(self, message):
+                 try:
+                     if is_proto(emsg_id):
+                         msg = MsgProto(emsg, message)
+                         print str(msg)
+                     else:
+                         msg = Msg(emsg, message, extended=True)
+                 except:

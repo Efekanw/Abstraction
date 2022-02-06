@@ -1,0 +1,21 @@
+def workflowstate(self, linedata):
+         wfs.state = wfs.event[wfs.event.rfind('.')+1:]
+         wfs.wf_id = self.wf_uuidToId(wfs.wf_uuid)
+         wfs.timestamp = wfs.ts
+         # XXX: this test is a band aid while people transition to
+         # the newer log style.
+         if hasattr(wfs, 'restart_count'):
+             if wfs.restart_count > 0:
+                 wfs.state += ' restart=%s' % wfs.restart_count
+                 del wfs.restart_count
+         else:
+             self.log.warn('workflowstate', 
+                 msg='Workflow state event lacks restart_count attribute.  Reprocess log with updated monitord.')
+         del wfs.event, wfs.ts
+         self.log.debug('workflowstate', msg=wfs)
+         wfs.commit_to_db(self.session)
+         
+         if wfs.state.startswith('end'):
+             self.flushCaches(wfs)
+         pass
+         

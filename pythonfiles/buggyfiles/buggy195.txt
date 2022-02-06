@@ -1,0 +1,7 @@
+def getFitZoomFac(self):
+ 	
+ 	def isNormalMode(self):
+ 		return self.mode == _ModeNormal
+ 	
+ 	def redisplay(self):
+ 		"""Starting from the data array, redisplay the data.

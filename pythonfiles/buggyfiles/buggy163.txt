@@ -1,0 +1,8 @@
+def __init__(self,parent=None):
+     def isComplete(self):
+         return True
+ 
+ def main():
+     # Debug info
+     print 'Python version: '+str(sys.version_info)
+ -- a/gui.py/xmlplot/gui_qt4.py

@@ -1,0 +1,11 @@
+def jobstate(self, linedata):
+         js.timestamp = js.ts
+ 
+         js.job_id = self.jobIdFromUnique(js)
+         if js.job_id == None:
+             self.log.error('jobstate',
+                 msg='Could not determine job_id for jobstate: %s' % js)
+             return
+         del js.name, js.wf_uuid, js.job_submit_seq, js.ts, js.event
+         
+         self.log.debug('jobstate', msg=js)

@@ -1,0 +1,10 @@
+def test_with_db(self, db):
+             assert chunk.get_data() == in_str
+ 
+             # Clean up.
+             assert db.clear_database()
+             assert db.uninstall()
+ 
+ 
+         def runTest(self):
+ ++ b/libs/libspiffacl_python/DBReader.py

@@ -1,0 +1,6 @@
+def createMonitorChart(self, host):
+         # TODO: add mem and net charts !
+         return
+ 
+ 
+ 

@@ -1,0 +1,7 @@
+def createPageChart(self):
+             cvus.append(str(page.cvus))
+             values.append(str(page.rps))
+             error = page.error_percent
+             values.append(str(error))
+             values.append(str(page.min))
+             values.append(str(page.avg))

@@ -1,0 +1,14 @@
+def ClassifyContinuousTestSet( test_set, feature_weights ):
+ 	column_header = "image\tground truth\tpred. val."
+ 	print column_header
+ 
+ 	split_statistics = ContinuousTestSetClassificationResults( feature_weights, test_set )
+ 	
+ 	for test_image_index in range( test_set.num_images ):
+ 		one_image_features = test_set.data_list[ 0 ][ test_image_index,: ]
+ 		result = _ClassifyOneImageContinuous( one_image_features, feature_weights )
+ 
+ 		result.path_to_source_image = test_set.imagenames_list[ 0 ][ test_image_index ]
+ 		result.ground_truth_value = test_set.ground_truths[ test_image_index ]
+ 
+ 		result.PrintToSTDOUT( line_item = True )

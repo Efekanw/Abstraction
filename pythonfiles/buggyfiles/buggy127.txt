@@ -1,0 +1,8 @@
+def jobIdFromUnique(self, o):
+             except orm.exc.MultipleResultsFound, e:
+                 self.log.error('jobIdFromUnique',
+                     msg='Multple job_id results for tuple %s : %s' % (uniqueIdIdx, e))
+             
+         return self.job_id_cache[uniqueIdIdx]
+         
+ -- a/lib/python/netlogger/analysis/schema/stampede_schema.py

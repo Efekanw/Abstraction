@@ -1,0 +1,5 @@
+def get_size(self):
+         return self.size
+ 
+     def __str__(self):
+         return self.name + ' ['+self.t+']'

@@ -1,0 +1,17 @@
+def fetchCallback(self, imObj):
+ 		if self.showNewWdg.getBool():
+ 			self.showImage(imObj)
+ 	
+ 	def ignoreEvt(self, evt=None):
+ 		pass
+ 	
+ 	def showImage(self, imObj):
+ 		"""Display an image.
+ 		"""
+ #		print "showImage(imObj=%s)" % (imObj,)
+ 		fitsIm = imObj.getFITSObj()
+ 		if not fitsIm:
+ 			self.statusBar.setMsg("Image %r: %s" % (imObj.imageName, imObj.state), RO.Constants.sevWarning)
+ 			return
+ 
+ 		imArr = fitsIm[0].data

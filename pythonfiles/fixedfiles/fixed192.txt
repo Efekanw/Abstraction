@@ -1,0 +1,14 @@
+def runtest(self, tag, testname, test_args):
+ 		exec "import %s" % testname
+ 		exec "mytest = %s.%s(self, testname + '.' + tag)" % \
+ 			(testname, testname)
+ 	finally:
+ 		sys.path.pop(0)
+ 
+ 	mytest.run(testname, test_args)
+ 
+ 
+ def runtest(self, tag, testname, test_args):
+ 	##__runtest(self, tag, testname, test_args)
+ 	fork_lambda(self.resultdir,
+ 		lambda : __runtest(self, tag, testname, test_args))

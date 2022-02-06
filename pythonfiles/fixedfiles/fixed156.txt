@@ -1,0 +1,9 @@
+def switchPage(self,newpage):
+ 
+     def onCompleteStateChanged(self):
+         curpage = self.currentpage
+         enable = curpage.isComplete() and (self.allowfinish or self.sequence.getNextPage(stay=True) is not None)
+         self.bnNext.setEnabled(enable)
+ 
+ # =======================================================================
+ ++ b/gui.py/gotm.py

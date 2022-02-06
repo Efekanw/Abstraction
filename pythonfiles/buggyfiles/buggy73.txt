@@ -1,0 +1,9 @@
+def check_digest(xml):
+     return rdig == ldig
+ 
+ 
+ def sign_rsa(self, MESSAGE, KEY, digst=''):
+     """
+     Decorador para firmar RSA
+     :return:
+ -- a/requirements.txt

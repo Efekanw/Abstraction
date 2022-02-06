@@ -1,0 +1,7 @@
+def task(self, linedata):
+         """
+         tsk = self.linedataToObject(linedata, Task())
+         tsk.job_id = self.jobIdFromUnique(tsk)
+         del tsk.wf_uuid, tsk.name, tsk.job_submit_seq, tsk.ts
+         
+         self.log.debug('task', msg=tsk)

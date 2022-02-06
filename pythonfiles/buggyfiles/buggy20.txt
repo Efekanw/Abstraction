@@ -1,0 +1,17 @@
+def write_pidfile():
+ 
+     open_logfile()
+ 
+     # Setup the logger
+     try:
+         # Try to make the logfile's directory if it doesn't exist
+         os.makedirs(os.path.abspath(os.path.dirname(options.logfile)))
+     except:
+         pass
+ 
+     import logging
+     log = logging.getLogger(__name__)
+ 
+     if options.profile:
+         import hotshot
+         hsp = hotshot.Profile(deluge.configmanager.get_config_dir("deluged.profile"))

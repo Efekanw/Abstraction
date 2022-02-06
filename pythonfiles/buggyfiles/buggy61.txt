@@ -1,0 +1,7 @@
+def load(self, data):
+         if self.headerSize != 36 or self.headerVersion != 2:
+             raise RuntimeError("Failed to parse header")
+ 
+ 
+ protobuf_mask = 0x80000000
+ 

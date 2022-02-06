@@ -1,0 +1,8 @@
+def Normalize( self, training_set = None ):
+ 			self.normalized_against = "itself"
+ 
+ 		if training_set:
+ 
+ 			# sanity checks
+ 			if self.normalized_against:
+ 				raise ValueError( "Test set {0} has already been normalized against {1}."\

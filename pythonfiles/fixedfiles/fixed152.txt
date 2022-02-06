@@ -1,0 +1,15 @@
+def main():
+         ref_snps = ""
+         for contig in contigs:
+             for pos in avail_pos[contig]:
+                 if not args.column_Ns or float(pos_stats[contig][pos]["N"]) / len(samples) < args.column_Ns and \
+                         float(pos_stats[contig][pos]["-"]) / len(samples) < args.column_Ns:
+                     ref_snps += str(avail_pos[contig][pos])
+         fp.write(">reference\n%s\n" % ref_snps)
+ 
+     print_stats(sample_stats, total_vars=len(avail_pos[contig]))
+ 
+     logging.info("Discarded total of %i poor quality columns", float(discarded) / len(args.input))
+     return 0
+ 
+ if __name__ == '__main__':

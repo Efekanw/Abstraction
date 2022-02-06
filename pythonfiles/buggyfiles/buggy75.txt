@@ -1,0 +1,10 @@
+def do_formsemestre_recapcomplet(self,REQUEST,formsemestre_id,format='html'):
+                         cssclass = 'recap_col_ue'
+                         # grise si moy UE < barre
+                         try:
+                             if float(nsn[i]) < 8:
+                                 cssclass = 'recap_col_ue_inf'
+                         except:
+                             pass
+                     else:
+ -- a/ZScolar.py

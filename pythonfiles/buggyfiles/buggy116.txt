@@ -1,0 +1,11 @@
+def _close():
+             return self.status(1, "%s: domain not running." % domain)
+ 
+     def remote_status(self):
+         return self.status()
+ 
+     def remote_run(self, domain, spider_settings=None):
+         """Spawn process to run the given domain."""
+         if len(self.running) < self.maxproc:
+             if not domain in self.running:
+                 logfile = os.path.join(self.logdir, domain, time.strftime("%FT%T.log"))

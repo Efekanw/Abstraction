@@ -1,0 +1,44 @@
+def get_mixture(record, threshold):
+                 i = comb[0]
+                 j = comb[1]
+ 
+                 alleles = set()
+ 
+                 if 0 in comb:
+                     alleles.add(str(record.REF))
+ 
+                 if i != 0:
+                     alleles.add(str(record.ALT[i - 1]))
+                     mixture = record.samples[0].data.AD[i]
+                 if j != 0:
+                     alleles.add(str(record.ALT[j - 1]))
+                     mixture = record.samples[0].data.AD[j]
+ 
+                 ratio = float(mixture) / total_depth
+                 if ratio == 1.0:
+                     print "This is only designed for mixtures! %s %s %s" % (record, ratio, record.samples[0].data.AD)
+                 elif ratio >= threshold:
+                     code = IUPAC_CODES[frozenset(alleles)]
+                     if ratio not in mixtures:
+                         mixtures[ratio] = []
+                     mixtures[ratio].append(code)
+     except AttributeError:
+         mixtures = {}
+ 
+     return mixtures
+ 
+ def get_args():
+     args = argparse.ArgumentParser()
+ 
+     args.add_argument("--directory", "-d", help="Path to the directory with .vcf files.")
+     args.add_argument("--input", "-i", type=str, nargs='+', help="List of VCF files to process.")
+     args.add_argument("--out", "-o", required=True, help="Path to the output FASTA file.")
+ 
+     args.add_argument("--with-mixtures", type=float)
+ 
+     args.add_argument("--Ns", type=float)
+ 
+     args.add_argument("--sample-Ns", type=float)
+ 
+     return args.parse_args()
+ 

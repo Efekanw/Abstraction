@@ -1,0 +1,7 @@
+def write_index(book, repo_url):
+     fp.close()
+ 
+ 
+ def do_stuff(catalog):
+     count = 0
+     file = codecs.open('README_template.rst', 'r', 'utf-8')

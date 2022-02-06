@@ -1,0 +1,8 @@
+def doDS9(self, wdg=None):
+ 		lord knows what it'll need once user can display mask*data!
+ 		"""
+ 		if not self.dispImObj:
+ 			raise RuntimeError("No guide image")
+ 
+ 		# open ds9 window if necessary
+ 		if self.ds9Win:

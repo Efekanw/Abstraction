@@ -1,0 +1,8 @@
+def create_github_repo(book):
+     gh = github3.login(username=GH_USER, password=GH_PASSWORD)
+     org = gh.organization(login='GITenberg')
+     team = org.list_teams()[0] # only one team in the github repo
+     _desc = u'%s by %s\n is a Project Gutenberg book, now on Github.' % (book.title, book.author)
+     repo_title = "%s_%s" % (book.title.decode('utf-8'), book.bookid)
+ 
+     try:

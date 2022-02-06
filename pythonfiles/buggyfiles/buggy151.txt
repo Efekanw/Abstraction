@@ -1,0 +1,9 @@
+def main():
+             sample_seq = ""
+             for contig in contigs:
+                 for pos in avail_pos[contig]:
+                     if not args.Ns or float(pos_stats[contig][pos]["N"]) / len(samples) < args.Ns and \
+                         float(pos_stats[contig][pos]["-"]) / len(samples) < args.Ns:
+                         sample_seq += all_data[contig][sample][pos]
+                     else:
+                         discarded += 1

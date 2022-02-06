@@ -1,0 +1,10 @@
+def main(options,args):
+         # Just enter the main loop
+         ret = main(options,args)
+ 
+ # Reset previous working directory (only if we had to change it)
+ os.chdir(os.path.dirname(oldworkingdir))
+ 
+ # Exit
+ sys.exit(ret)
+ -- a/gui.py/scenariobuilder.py

@@ -1,0 +1,10 @@
+def decorated(*args, **kwargs):
+             g.role = ki.get('role', None)
+             return f(*args, **kwargs)
+ 
+         m = re.match('Bearer (\S+)', auth_header)
+         if m:
+             token = m.group(1)
+             try:
+                 payload = parse_token(token)
+             except DecodeError:

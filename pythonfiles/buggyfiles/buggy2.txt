@@ -1,0 +1,9 @@
+def decorated(*args, **kwargs):
+             g.role = ki.get('role', None)
+             return f(*args, **kwargs)
+ 
+         if auth_header.startswith('Bearer'):
+             token = auth_header.replace('Bearer ', '')
+             try:
+                 payload = parse_token(token)
+             except DecodeError:

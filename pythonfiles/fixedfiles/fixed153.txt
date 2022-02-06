@@ -1,0 +1,8 @@
+def onEditingFinished(self):
+ 
+ class Wizard(QtGui.QDialog):
+     
+     def __init__(self,parent=None,sequence=None,closebutton=False,headerlogo=None,allowfinish=False):
+         QtGui.QDialog.__init__(self, parent, QtCore.Qt.Window|QtCore.Qt.WindowContextHelpButtonHint|QtCore.Qt.WindowMinMaxButtonsHint)
+ 
+         layout = QtGui.QVBoxLayout()

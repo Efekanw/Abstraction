@@ -1,0 +1,17 @@
+def start_ui():
+     # Get the options and args from the OptionParser
+     (options, args) = parser.parse_args(deluge.common.unicode_argv()[1:])
+ 
+     # Setup the logger
+     if options.quiet:
+         options.loglevel = "none"
+     if options.loglevel:
+         options.loglevel = options.loglevel.lower()
+     logfile_mode = 'w'
+     if options.rotate_logs:
+         logfile_mode = 'a'
+     setupLogger(level=options.loglevel, filename=options.logfile, filemode=logfile_mode)
+     log = getLogger(__name__)
+ 
+     if options.config:
+         if not os.path.exists(options.config):

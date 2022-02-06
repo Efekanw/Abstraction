@@ -1,0 +1,23 @@
+def main():
+     else:
+         app = QtGui.qApp
+ 
+     # Create wizard dialog
+     wiz = commonqt.Wizard()
+     wiz.setWindowTitle('Scenario builder')
+     wiz.resize(800, 600)
+ 
+     seq = commonqt.WizardSequence([PageOpen,SequenceEditScenario(),PageFinal])
+     wiz.setSequence(seq)
+     wiz.show()
+ 
+     ret = app.exec_()
+     page = None
+ 
+     wiz.unlink()
+ 
+     sys.exit(ret)
+ 
+ # If the script has been run (as opposed to imported), enter the main loop.
+ if (__name__=='__main__'): main()
+ -- a/gui.py/visualizer.py

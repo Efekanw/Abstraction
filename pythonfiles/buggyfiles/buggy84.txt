@@ -1,0 +1,7 @@
+def __get_resource_from_query(self, query, type = None):
+                 if last_id != row[tbl_r.c.id]:
+                     break
+ 
+         if len(resource_list) == 1:
+             return resource
+         return resource_list

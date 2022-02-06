@@ -1,0 +1,13 @@
+def load(self, data):
+ 
+         self.msg = EMsg(msg)
+ 
+     def __str__(self):
+         return '\n'.join(["msg: %s" % repr(self.msg),
+                           "targetJobID: %s" % self.targetJobID,
+                           "sourceJobID: %s" % self.sourceJobID,
+                           ])
+ 
+ 
+ class ExtendedMsgHdr:
+     _size = struct.calcsize("<IBHqqBqi")

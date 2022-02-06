@@ -1,0 +1,36 @@
+def initializeToPegasusDB(db, metadata):
+         orm.mapper(File, st_file)
+     except exc.ArgumentError:
+         pass
+         
+     st_edge_static = Table('edge_static', metadata,
+                             Column('wf_uuid', VARCHAR(255), primary_key=True, nullable=False),
+                             Column('parent', VARCHAR(255), primary_key=True, nullable=False),
+                             Column('child', VARCHAR(255), primary_key=True, nullable=False)
+     )
+     
+     Index('UNIQUE_STATIC_EDGE', st_edge_static.c.wf_uuid, 
+             st_edge_static.c.parent, st_edge_static.c.child, unique=True)
+     
+     try:
+         orm.mapper(EdgeStatic, st_edge_static)
+     except exc.ArgumentError:
+         pass
+         
+     st_edge = Table('edge', metadata,
+                     Column('parent_id', KeyInt,
+                             ForeignKey('job.job_id'), primary_key=True, nullable=False),
+                     Column('child_id', KeyInt,
+                             ForeignKey('job.job_id'), primary_key=True, nullable=False)
+     )
+     
+     Index('UNIQUE_EDGE', st_edge.c.parent_id, st_edge.c.child_id, unique=True)
+     
+     try:
+         orm.mapper(Edge, st_edge)
+     except exc.ArgumentError:
+         pass
+     
+     metadata.create_all(db)
+     pass
+ ++ b/lib/python/netlogger/analysis/schemacfg.py

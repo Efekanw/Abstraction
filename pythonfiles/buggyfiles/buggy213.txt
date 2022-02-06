@@ -1,0 +1,7 @@
+def single_file_replace_style_merge_capability(sbox):
+                                      mu_path + '@1',
+                                      mu_path)
+ 
+ 
+ ########################################################################
+ # Run the tests

@@ -1,0 +1,12 @@
+def _fetchFile(self):
+ 			# pre-pend directory information
+ 			(host, rootDir), isCurr = self.guideModel.imageRoot.get()
+ 			if None in (host, rootDir):
+ 				raise RuntimeError("Base dir unknown; cannot download")
+ 
+ 			# do NOT use os.path to join remote host path components;
+ 			# simply concatenate instead
+ 			fromPath = rootDir + self.imageName
+ 
+ 			toPath = self.getLocalPath()
+ 			

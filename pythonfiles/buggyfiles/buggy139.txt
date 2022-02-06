@@ -1,0 +1,11 @@
+def handler(**kwargs):
+ 
+                 try:
+                     return func(**kwargs)
+                 except ex.SavannaException, e:
+                     return bad_request(e)
+                 except Exception, e:
+                     return internal_error(500, 'Internal Server Error', e)
+ 
+             f_rule = "/<tenant_id>" + rule
+ -- a/savanna/utils/hacking/checks.py

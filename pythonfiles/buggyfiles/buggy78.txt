@@ -1,0 +1,14 @@
+def checkBoardExists( self ):
+ 		
+ 
+ 	def deleted( self, *arg ):
+ 
+ 		if self.thePluginInstanceSelection != None:
+ 			self.thePluginInstanceSelection.deleted()
+ 			self.thePluginInstanceSelection = None
+ 		self.theSession.deleteEntityListWindow( self )
+ 
+ 		return FALSE
+ 	
+ 	# ====================================================================
+ 	def deletePluginInstanceSelection( self, *arg ):

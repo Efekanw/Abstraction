@@ -1,0 +1,12 @@
+def doGuideOn(self, wdg=None):
+ 		"""Guide on the selected star.
+ 		"""
+ 		if not self.dispImObj:
+ 			self.statusBar.setMsg("No guide image", severity = RO.Constants.sevWarning)
+ 			return
+ 		if not self.dispImObj.selDataColor:
+ 			self.statusBar.setMsg("No star selected", severity = RO.Constants.sevWarning)
+ 			return
+ 		
+ 		starData, color = self.dispImObj.selDataColor
+ 		pos = starData[2:4]

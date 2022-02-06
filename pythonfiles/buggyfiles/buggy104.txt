@@ -1,0 +1,21 @@
+def __init__(self):
+         
+     def load_nodes(self):
+         """Loads nodes listed in CLUSTER_MASTER_NODES setting"""
+         for name, url in settings.get('CLUSTER_MASTER_NODES', {}).iteritems():
+             self.load_node(name, url)
+             
+     def load_node(self, name, url):
+         """Creates the remote reference for each worker node"""
+         def _make_callback(_factory, _name, _url):
+ 
+             def _errback(_reason):
+                 log.msg("Could not get remote node %s in %s: %s." % (_name, _url, _reason), log.ERROR)
+ 
+             d = _factory.getRootObject()
+             d.addCallbacks(callback=lambda obj: self.add_node(obj, _name), errback=_errback)
+ 
+         server, port = url.split(":")
+         port = int(port)
+         log.msg("Connecting to cluster worker %s..." % name)
+         log.msg("Server: %s, Port: %s" % (server, port))

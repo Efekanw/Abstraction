@@ -1,0 +1,10 @@
+def print_pending(self, verbosity=1):
+     def _engine_started(self):
+         self.load_nodes()
+         scrapyengine.addtask(self.update_nodes, settings.getint('CLUSTER_MASTER_POLL_INTERVAL'))
+ 
+     def _engine_stopped(self):
+         with open(settings["CLUSTER_MASTER_STATEFILE"], "w") as f:
+             pickle.dump(self.pending, f)
+             log.msg("Cluster master state saved in %s" % settings["CLUSTER_MASTER_STATEFILE"])
+ ++ b/scrapy/branches/cluster-refactor/scrapy/contrib/pbcluster/master/web.py

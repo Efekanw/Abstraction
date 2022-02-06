@@ -1,0 +1,9 @@
+def runtest(self, tag, testname, test_args):
+ 		exec "import %s" % testname
+ 		exec "mytest = %s.%s(self, testname + '.' + tag)" % \
+ 			(testname, testname)
+ 
+ 		mytest.run(testname, test_args)
+ 
+ 	finally:
+ 		sys.path.pop(0)

@@ -1,0 +1,8 @@
+def get_extension_from_handle(self, handle, version):
+         if extension is None:
+             return None
+         extension.set_handle(handle)
+         self.__load_dependency_list(extension)
+         return extension
+ 
+ 

@@ -1,0 +1,7 @@
+def load(self, data):
+ 
+         self.universe = EUniverse(universe)
+ 
+ 
+ class ChannelEncryptResponse:
+     def __init__(self, data=None):

@@ -1,0 +1,8 @@
+def disconnect(self):
+         self.connection.disconnect()
+ 
+         self._recv_loop.kill(block=False)
+         self._heartbeat_loop.kill()
+ 
+         self._init_attributes()
+ 

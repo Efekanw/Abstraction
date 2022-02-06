@@ -1,0 +1,16 @@
+def write_index(book, repo_url):
+     fp.close()
+ 
+ 
+ 
+ def write_index(book, repo_url):
+     """ append to an index file """
+     fp = open('./index.csv', 'a')
+     fp.write(u"%s\t%s" % ( repo_url, book.bookid))
+     fp.close()
+ 
+ 
+ 
+ def do_stuff(catalog):
+     count = 0
+     file = codecs.open('README_template.rst', 'r', 'utf-8')

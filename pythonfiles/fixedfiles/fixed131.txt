@@ -1,0 +1,8 @@
+def __init__(self, files=[], **read_kw):
+         """
+         nllog.DoesLogging.__init__(self)
+         self._parser = ConfigParser.RawConfigParser()
+         self._mapping, self._defaults, self._drop = { }, { }, { }
+         for f in files:
+             self.read(f, **read_kw)
+             

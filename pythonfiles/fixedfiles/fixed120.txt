@@ -1,0 +1,15 @@
+def linedataToObject(self, linedata, o):
+                 k = 'jobstate_submit_seq'
+             if k == 'parent.wf.id':
+                 k = 'parent_workflow_id'
+             if k == 'arguments':
+                 v = v.replace("'", "\\'")
+             
+             try:
+                 exec("o.%s = '%s'" % (k,v))
+             except:
+                 self.log.error('linedataToObject', 
+                     msg='unable to process attribute %s with values: %s' % (k,v))
+         
+         # global type re-assignments
+         if hasattr(o, 'ts'):

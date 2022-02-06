@@ -1,0 +1,9 @@
+def createPageChart(self):
+         f.close()
+         gnuplot(gplot_path)
+ 
+ 
+ 
+     def createAllResponseChart(self):
+         """Create global responses chart."""
+         image_path = str(os.path.join(self.report_dir, 'requests_rps.png'))

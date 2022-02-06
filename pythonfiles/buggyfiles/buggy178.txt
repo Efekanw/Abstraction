@@ -1,0 +1,14 @@
+def UnitTest6():
+ 
+ 
+ #================================================================
+ def UnitTest7(max_features = 5):
+ 	"""try to find the number of features at which the predicted and ground truth values
+ 	correllates most"""
+ 
+ 	#ts = TrainingSet.NewFromFileOfFiles( "/Users/chris/src/fake_signatures/classes/continuous_data_set.fof" )
+ 	#ts.PickleMe()
+ 	ts = TrainingSet.NewFromPickleFile( "/Users/chris/src/fake_signatures/classes/continuous_data_set.fof.fit.pickled" )
+ 	weights = ContinuousFeatureWeights.NewFromTrainingSet( ts )
+ 
+ 	split_results = []

@@ -1,0 +1,12 @@
+def workflowstate(self, linedata):
+         wfs.state = wfs.event[wfs.event.rfind('.')+1:]
+         wfs.wf_id = self.wf_uuidToId(wfs.wf_uuid)
+         wfs.timestamp = wfs.ts
+         del wfs.event, wfs.ts
+         self.log.debug('workflowstate', msg=wfs)
+         wfs.commit_to_db(self.session)
+  
+         if wfs.state == 'end':
+             self.flushCaches(wfs)
+         pass
+         

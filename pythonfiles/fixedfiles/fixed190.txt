@@ -1,0 +1,7 @@
+def __init__(self, job, testdir):
+ 		self.srcdir = self.bindir + '/src'
+ 
+ 		self.tmpdir = job.tmpdir + '/' + testname
+ 		if os.path.exists(self.tmpdir):
+ 			system('rm -rf ' + self.tmpdir)
+ 		os.mkdir(self.tmpdir)

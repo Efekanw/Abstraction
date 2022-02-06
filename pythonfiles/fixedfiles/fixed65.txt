@@ -1,0 +1,14 @@
+def load(self, data):
+          _,
+          ) = struct.unpack_from("<II128sII", data)
+ 
+     def __str__(self):
+         return '\n'.join(["protocolVersion: %s" % self.protocolVersion,
+                           "keySize: %s" % self.keySize,
+                           "key: %s" % repr(self.key),
+                           "crc: %s" % self.crc,
+                           ])
+ 
+ 
+ class ChannelEncryptResult:
+     def __init__(self, data=None):

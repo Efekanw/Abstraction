@@ -1,0 +1,13 @@
+def close(self):
+         cPickle.dump(container, file)
+         file.close()
+      
+ def load(file):
+     """Load an existing database.
+ 
+     Return a Database instance.
+     """
+     container = cPickle.load(file)
+     file.close()
+     db = Database(file.name)
+ -- a/builddocs

@@ -1,0 +1,8 @@
+def main():
+                     avail_pos[record.CHROM].insert(record.POS, str(record.REF))
+                     pos_stats[record.CHROM][record.POS] = {"N":0, "-": 0}
+ 
+             elif args.with_mixtures and record.is_snp:
+                 mix = get_mixture(record, args.with_mixtures)
+ 
+                 for ratio, code in mix.items():

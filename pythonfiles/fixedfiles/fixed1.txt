@@ -1,0 +1,10 @@
+def decorated(*args, **kwargs):
+         if not auth_header:
+             return authenticate('Missing authorization API Key or Bearer Token')
+ 
+         m = re.match('Key (\S+)', auth_header)
+         if m:
+             key = m.group(1)
+             try:
+                 ki = verify_api_key(key, request.method)
+             except AuthError as e:

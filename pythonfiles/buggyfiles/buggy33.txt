@@ -1,0 +1,7 @@
+def createResponseChart(self, step):
+         # data
+         lines = ["CUs STEP ERROR MIN AVG MAX P10 P50 P90 P95"]
+         cvus = []
+         for cycle in self.cycles:
+             if not stats[cycle]['response_step'].has_key(step):
+                 continue

@@ -1,0 +1,7 @@
+def main():
+     Process VCF files and merge them into a single fasta file.
+     """
+ 
+     args = get_args()
+     contigs = list()
+ 

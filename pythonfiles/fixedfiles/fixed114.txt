@@ -1,0 +1,44 @@
+def __init__(self):
+ 
+         self.maxproc = settings.getint('CLUSTER_WORKER_MAXPROC')
+         self.logdir = settings['CLUSTER_LOGDIR']
+         self.running = {} # dict of domain->ScrapyProcessControl 
+         self.crawlers = {} # dict of pid->scrapy process remote pb connection
+         self.starttime = datetime.datetime.utcnow()
+         port = settings.getint('CLUSTER_WORKER_PORT')
+         scrapyengine.listenTCP(port, pb.PBServerFactory(self))
+         log.msg("Using sys.path: %s" % repr(sys.path), level=log.DEBUG)
+ 
+     def status(self, rcode=0, rstring=None):
+         """Return the status of this worker as dict.
+         
+         The keys of the dict are:
+         
+         running:
+           list of dicts of processes running by this worker. for information
+           about the dict see ScrapyProcessControl.status()
+         starttime:
+           the start time of this worker as a UTC datetime object
+         timestamp: 
+           the current timestamp as a UTC datetime object
+         maxproc: 
+           the maximum number of processes supported by this worker
+         loadavg: 
+           the load average of this worker. see os.getloadavg()
+         logdir: 
+           the log directory used by this worker
+         callresponse: 
+           response to the request performed. only available when there was a request
+         """
+ 
+         status = {}
+         status["running"] = [self.running[k].status() for k in self.running.keys()]
+         status["starttime"] = self.starttime
+         status["timestamp"] = datetime.datetime.utcnow()
+         status["maxproc"] = self.maxproc
+         status["loadavg"] = os.getloadavg()
+         status["logdir"] = self.logdir
+         status["callresponse"] = (rcode, rstring) if rstring else (0, "No request")
+         return status
+ 
+     def update_master(self, domain, domain_status):

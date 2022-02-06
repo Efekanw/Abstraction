@@ -1,0 +1,9 @@
+def main():
+                     for pos in sample_stats[contig][sample]["n_pos"]:
+                         pos_stats[contig][pos]["N"] -= 1
+ 
+                     logging.info("Removing %s due to high Ns in sample: %s", sample , sample_n_ratio)
+ 
+                     delete_samples.append(sample)
+ 
+         samples = [sample for sample in samples if sample not in delete_samples]

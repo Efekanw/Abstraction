@@ -1,0 +1,15 @@
+def _handle_encrypt_request(self, emsg, msg):
+         logger.debug("Event: Ready")
+ 
+     def _handle_multi(self, emsg, msg):
+         logger.debug("Unzipping CMsgMulti")
+ 
+         data = zipfile.ZipFile(StringIO(msg.body.message_body)).read('z')
+ 
+         if len(data) != msg.body.size_unzipped:
+             logger.fatal("Unzipped size mismatch")
+             self.disconnect()
+             return
+ 
+         while len(data) > 0:
+             size, = struct.unpack_from("<I", data)

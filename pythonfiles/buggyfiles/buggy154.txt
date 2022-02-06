@@ -1,0 +1,7 @@
+def __init__(self,parent=None,sequence=None,closebutton=False,headerlogo=None):
+ 
+         self.sequence = sequence
+         self.currentpage = None
+ 
+     def getProperty(self,propertyname):
+         if propertyname not in self.shared: return None

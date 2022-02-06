@@ -1,0 +1,10 @@
+def doGuideOn(self, wdg=None):
+ 		"""Guide on the selected star.
+ 		"""
+ 		if not self.dispImObj:
+ 			raise RuntimeError("No guide image")
+ 		if not self.dispImObj.selDataColor:
+ 			raise RuntimeError("No star selected")
+ 		
+ 		starData, color = self.dispImObj.selDataColor
+ 		pos = starData[2:4]

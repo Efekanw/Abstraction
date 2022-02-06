@@ -1,0 +1,14 @@
+def runTest(self):
+             self.register_extension_test(extdb)
+             self.check_dependencies_test(extdb)
+             self.unregister_extension_test(extdb)
+             self.get_extension_test(extdb)
+             self.callback_test(extdb)
+ 
+             # Clean up.
+             assert extdb.clear_database()
+             assert extdb.uninstall()
+             assert acldb.uninstall()
+ 
+ 
+     testcase = DBTest()

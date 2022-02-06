@@ -1,0 +1,7 @@
+def NewFromFitFile( cls, pathname ):
+ 
+ 			for line in fitfile:
+ 				if line_num is 0:
+ 					# we don't really care how many classes there are for a continuous training set
+ 					pass
+ 				elif line_num is 1:

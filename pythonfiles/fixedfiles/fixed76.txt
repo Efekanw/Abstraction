@@ -1,0 +1,8 @@
+def formChoixSemestreGroupe(self):
+         for sem in sems:
+             formsemestre_id = sem['formsemestre_id']
+             gr_td,gr_tp,gr_anglais = self.Notes.do_formsemestre_inscription_listegroupes(formsemestre_id=formsemestre_id)
+             for gr in gr_td:
+                 tmpl = '<option value="%s!%s!!">%s %s</option>'
+                 H.append( tmpl %(formsemestre_id,gr,sem['titre'],gr))
+ ++ b/dtml/notes/module_list.dtml

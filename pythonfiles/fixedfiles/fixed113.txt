@@ -1,0 +1,47 @@
+def __init__(self, procman, domain, logfile=None, spider_settings=None):
+         self.status = "starting"
+         self.pid = -1
+         self.env = {}
+         # We preserve the original settings format for info purposes (avoid
+         # lots of unnecesary "SCRAPY_")
+         self.scrapy_settings = spider_settings or {}
+         self.scrapy_settings.update({'LOGFILE': self.logfile, 
+                                      'CLUSTER_WORKER_ENABLED': 0, 
+                                      'CLUSTER_CRAWLER_ENABLED': 1, 
+                                      'WEBCONSOLE_ENABLED': 0})
+         pickled_settings = pickle.dumps(self.scrapy_settings)
+         self.env["SCRAPY_PICKLED_SETTINGS_TO_OVERRIDE"] = pickled_settings
+         # we nee to pass the worker python path to the crawling process so it
+         # knows where to find the local_scrapy_settings
+         self.env["PYTHONPATH"] = ":".join(sys.path)
+ 
+     def __str__(self):
+         return "<ScrapyProcess domain=%s, pid=%s, status=%s>" % (self.domain, self.pid, self.status)
+ 
+     def status(self):
+         """Return this scrapy process status as a dict.
+         
+         The keys are: 
+ 
+         domain:
+           the domain being crawled
+         pid:
+           the pid of this process
+         status:
+           the status of this process (starting, running)
+         settings:
+           the scrapy settings overrided for this process by the worker
+         logfile:
+           the log file being used
+         starttime:
+           the start time of this process as a UTC datetime object
+         """
+         return {"domain": self.domain, 
+                 "pid": self.pid, 
+                 "status": self.status, 
+                 "settings": self.scrapy_settings, 
+                 "logfile": self.logfile, 
+                 "starttime": self.start_time}
+ 
+     def connectionMade(self):
+         self.pid = self.transport.pid

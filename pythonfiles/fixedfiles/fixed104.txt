@@ -1,0 +1,13 @@
+def __init__(self):
+         
+     def load_nodes(self):
+         """Loads nodes listed in CLUSTER_MASTER_NODES setting"""
+         for name, hostport in settings.get('CLUSTER_MASTER_NODES', {}).iteritems():
+             self.load_node(name, hostport)
+             
+     def load_node(self, name, hostport):
+         """Creates the remote reference for a worker node"""
+         server, port = hostport.split(":")
+         port = int(port)
+         log.msg("Connecting to cluster worker %s..." % name)
+         log.msg("Server: %s, Port: %s" % (server, port))

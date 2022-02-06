@@ -1,0 +1,8 @@
+def refresh_slices_smgr(self):
+         credential = self.api.getCredential()
+         for aggregate in aggregates:
+             try:
+                 slices = aggregates[aggregate].slices(credential)
+                 slice_hrns.extend(slices)
+             except:
+                 print >> log, "Error calling slices at aggregate %(aggregate)s" % locals()

@@ -1,0 +1,8 @@
+def update_provider_info(self, volumes, snapshots):
+         vol_updates = []
+         for vol in volumes:
+             if not vol.provider_id:
+                 vol_updates.append({
+                     'id': vol.id,
+                     'provider_id': self._generate_purity_vol_name(vol),
+ -- /dev/null

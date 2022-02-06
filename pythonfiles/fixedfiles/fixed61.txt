@@ -1,0 +1,18 @@
+def load(self, data):
+         if self.headerSize != 36 or self.headerVersion != 2:
+             raise RuntimeError("Failed to parse header")
+ 
+     def __str__(self):
+         return '\n'.join(["msg: %s" % self.msg,
+                           "headerSize: %s" % self.headerSize,
+                           "headerVersion: %s" % self.headerVersion,
+                           "targetJobID: %s" % self.targetJobID,
+                           "sourceJobID: %s" % self.sourceJobID,
+                           "headerCanary: %s" % self.headerCanary,
+                           "steamID: %s" % self.steamID,
+                           "sessionID: %s" % self.sessionID,
+                           ])
+ 
+ 
+ protobuf_mask = 0x80000000
+ 

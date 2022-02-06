@@ -1,0 +1,10 @@
+def _RequestServedFromCache(self, request_id, _):
+     request.served_from_cache = True
+ 
+   def _ResponseReceived(self, request_id, params):
+     if request_id in self._completed_requests_by_id:
+       assert request_id not in self._requests_in_flight
+       return
+     assert request_id in self._requests_in_flight
+     (r, status) = self._requests_in_flight[request_id]
+     if status == RequestTrack._STATUS_RESPONSE:

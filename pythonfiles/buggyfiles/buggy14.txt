@@ -1,0 +1,8 @@
+def load(fp, **kw):
+     7: "Checking Resume Data"
+ }
+ 
+ 
+ TORRENT_STATE = [
+     "Allocating",
+     "Checking",

@@ -1,0 +1,8 @@
+def register_callback(self, emsg, callback):
+         if emsg not in self.registered_callbacks:
+             self.registered_callbacks[emsg] = [callback]
+         else:
+             allbacks = self.registered_callbacks[emsg]
+ 
+             if callback not in callbacks:
+                 callbacks.append(callback)

@@ -1,0 +1,8 @@
+def _dispFromScaled(self, val):
+ 	def _updCurrVal(self, evt):
+ 		"""Show the value that the mouse pointer is over.
+ 		"""
+ 		cnvPos =  self.cnvPosFromEvt(evt)
+ 		imPos = self.imPosFromCnvPos(cnvPos)
+ 		try:
+ -- a/TUI/Guide/GuideWdg.py

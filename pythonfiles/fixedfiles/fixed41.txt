@@ -1,0 +1,13 @@
+def __init__(self, name='', keys='', inbox=None, datapath=None, args=None):
+         super(GlanceV2Driver, self).__init__(name, keys, inbox, datapath, args)
+         datasource_driver.ExecutionDriver.__init__(self)
+         self.creds = args
+         auth = v2.Password(auth_url=self.creds['auth_url'],
+                            username=self.creds['username'],
+                            password=self.creds['password'],
+                            tenant_name=self.creds['tenant_name'])
+         sess = session.Session(auth=auth)
+         self.glance = glclient.Client(session=sess)
+         self.add_executable_client_methods(self.glance, 'glanceclient.v2.')
+         self._init_end_start_poll()
+ 

@@ -1,0 +1,21 @@
+def job(self, linedata):
+             self.log.debug('job', msg='Updating jobid: %s' % jid)
+             job.job_id = jid # set PK from cache for merge
+             job.merge_to_db(self.session)
+             
+         # process edge information
+         query = self.session.query(Edge).filter(Edge.child_id == job.job_id)
+         if query.count() == 0:
+             self.log.debug('job', msg='Finding edges for job %s (job_id: %s)' % (job.name, job.job_id))
+             edgeq = self.session.query(EdgeStatic.parent).filter(EdgeStatic.wf_uuid == job.wf_uuid).filter(EdgeStatic.child == job.name)
+             for parent in edgeq.all():
+                 parentName = parent[0]
+                 parentq = self.session.query(Job.job_id).filter(Job.name == parentName)
+                 parentid = parentq.one()[0]
+                 edge = Edge()
+                 edge.parent_id = parentid
+                 edge.child_id = job.job_id
+                 edge.commit_to_db(self.session)
+         pass
+         
+     def jobstate(self, linedata):

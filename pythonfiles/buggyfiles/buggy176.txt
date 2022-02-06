@@ -1,0 +1,9 @@
+def FeatureReduce( self, requested_features ):
+ 		# copy everything but the signature data
+ 		reduced_ts = ContinuousTrainingSet()
+ 		reduced_ts.source_path = self.source_path + "(feature reduced)"
+ 		reduced_ts.num_classes = self.num_classes
+ 		assert reduced_ts.num_classes == len( self.data_list )
+ 		new_num_features = len( requested_features )
+ 		reduced_ts.num_features = new_num_features
+ 		reduced_ts.num_images = self.num_images

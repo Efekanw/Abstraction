@@ -1,0 +1,7 @@
+def showSelection(self):
+ 
+ 		if not self.dispImObj or not self.dispImObj.selDataColor:
+ 			# disable controls
+ 			self.guideOnBtn.setEnable(False)
+ 			
+ 			# clear data display

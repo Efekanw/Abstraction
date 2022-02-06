@@ -1,0 +1,8 @@
+def __init__(self, connString=None, perf='no', **kw):
+             'stampede.task.prescript': self.task,
+             'stampede.workflow.end': self.workflowstate,
+             'stampede.workflow.plan': self.workflow,
+             'stampede.workflow.restart': self.workflowstate,
+             'stampede.workflow.start': self.workflowstate
+         }
+         

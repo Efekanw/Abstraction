@@ -1,0 +1,27 @@
+def __init__(self, msg, data=None):
+     def serialize(self):
+         return self._header.serialize() + self.body.SerializeToString()
+ 
+     def __repr__(self):
+         return "<MsgProto %s>" % repr(self.msg)
+ 
+     def __str__(self):
+         rows = ["MsgProto"]
+ 
+         header = str(self.header).rstrip()
+         if header:
+             rows.append("-------------- header --")
+             rows.append(header)
+ 
+         body = str(self.body).rstrip()
+         if body:
+             rows.append("---------------- body --")
+             rows.append(body)
+ 
+         if len(rows) == 1:
+             rows[0] += " (empty)"
+ 
+         return '\n'.join(rows)
+ 
+ 
+ class ChannelEncryptRequest:

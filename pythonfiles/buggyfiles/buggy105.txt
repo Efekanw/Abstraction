@@ -1,0 +1,19 @@
+def _errback(_reason):
+         try:
+             reactor.connectTCP(server, port, factory)
+         except Exception, err:
+             log.msg("Could not connect to node %s in %s: %s." % (name, url, reason), log.ERROR)
+         else:
+             _make_callback(factory, name, url)
+ 
+     def update_nodes(self):
+         for name, url in settings.get('CLUSTER_MASTER_NODES', {}).iteritems():
+             if name in self.nodes and self.nodes[name].alive:
+                 log.msg("Updating node. name: %s, url: %s" % (name, url) )
+                 self.nodes[name].update_status()
+             else:
+                 log.msg("Reloading node. name: %s, url: %s" % (name, url) )
+                 self.load_node(name, url)
+         
+         real_running = set(self.running.keys())
+         lost = self.statistics["domains"]["running"].difference(real_running)

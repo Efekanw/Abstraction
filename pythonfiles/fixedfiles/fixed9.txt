@@ -1,0 +1,16 @@
+def get_size(self):
+         return self.size
+ 
+     def __str__(self):
+         """show name of main object and his members """
+         print "<%s>" % self.name
+         def showtree(obj,spc):
+             """how about members?"""
+             for i in obj.members:
+                 if i.filetype == "d":
+                     print "%s[%s]" % (spc, i.name)
+                 else:
+                     print "%s%s" % (spc, i.name)
+                 showtree(i,spc+".")
+         showtree(self,".")
+         return ""

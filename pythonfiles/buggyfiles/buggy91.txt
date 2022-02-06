@@ -1,0 +1,11 @@
+def get_extension_from_id(self, id):
+         @return: The extension on success, None if it does not exist.
+         """
+         assert id >= 0
+         extension = db.get_resource_from_id(id, 'Extension')
+         if extension is None:
+             return None
+         self.__load_dependency_list(extension)
+         return extension
+ 
+ 

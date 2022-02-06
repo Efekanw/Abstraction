@@ -1,0 +1,8 @@
+def createMonitorChart(self, host):
+         lines.append('set autoscale y')
+         lines.append('set style fill solid .25')
+         lines.append('set size 1.0, 0.3')
+         lines.append('set ytics 10')
+         lines.append('set xlabel "Time"')
+         lines.append('set origin 0.0, 0.0')
+         lines.append('plot "%s" u 1:2 notitle with impulse lw 2 lt 3' % data_path)

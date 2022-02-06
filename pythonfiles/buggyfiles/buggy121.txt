@@ -1,0 +1,7 @@
+def linedataToObject(self, linedata, o):
+             o.cluster_duration = float(o.cluster_duration)
+         if hasattr(o, 'duration') and o.duration != None:
+             o.duration = float(o.duration)
+         return o
+         
+     #############################################

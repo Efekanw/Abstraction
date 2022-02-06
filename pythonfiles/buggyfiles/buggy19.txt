@@ -1,0 +1,28 @@
+def start_daemon():
+     # Get the options and args from the OptionParser
+     (options, args) = parser.parse_args()
+ 
+     if options.quiet:
+         options.loglevel = "none"
+ 
+     logfile_mode = 'w'
+     if options.rotate_logs:
+         logfile_mode = 'a'
+ 
+     # Setup the logger
+     deluge.log.setupLogger(level=options.loglevel, filename=options.logfile,
+                            filemode=logfile_mode)
+ 
+     import deluge.configmanager
+     if options.config:
+         if not deluge.configmanager.set_config_dir(options.config):
+             print("There was an error setting the config dir! Exiting..")
+             sys.exit(1)
+ 
+     # Sets the options.logfile to point to the default location
+     def open_logfile():
+         if not options.logfile:
+             options.logfile = deluge.configmanager.get_config_dir("deluged.log")
+ 
+     # Writes out a pidfile if necessary
+     def write_pidfile():

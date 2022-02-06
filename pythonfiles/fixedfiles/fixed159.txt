@@ -1,0 +1,30 @@
+def main():
+     else:
+         app = QtGui.qApp
+ 
+     import xmlplot.gui_qt4
+ 
+     # Create wizard dialog
+     wiz = commonqt.Wizard(headerlogo='./logo.png')
+     wiz.setWindowTitle('Scenario builder')
+     wiz.resize(800, 600)
+ 
+     seq = commonqt.WizardSequence([PageOpen,SequenceEditScenario(),PageFinal])
+     wiz.setSequence(seq)
+ 
+     wiz.show()
+ 
+     ret = app.exec_()
+     
+     scenario = wiz.getProperty('scenario')
+     if scenario is not None: scenario.addref()
+ 
+     wiz.destroy()
+ 
+     return scenario
+ 
+ # If the script has been run (as opposed to imported), enter the main loop.
+ if (__name__=='__main__'):
+     ret = main()
+     sys.exit(0)
+ ++ b/gui.py/visualizer.py

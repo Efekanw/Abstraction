@@ -1,0 +1,23 @@
+def read(self, str_or_file):
+             m = name_expr.match(sect)
+             if m is None:
+                 raise ValueError("Event name [%s]: %s" % (sect, msg))
+             type_map = { }
+             for name, value in self._parser.items(sect):
+                 # check that name is legal
+                 m = name_expr.match(name)
+                 if m is None:
+                     raise ValueError("Field name '%s': %s" % (name, msg))
+                 try:
+                     fn = self._TYPEFN[value]
+                     # make "None" a cheap no-op
+                     if fn is not None:
+                         type_map[name] = fn
+                 except KeyError:
+                     raise ValueError("Unknown type in '%s=%s' "
+                                      "in section [%s]" % (
+                                          name, value, sect))
+             self._mapping[sect] = type_map
+ 
+     def get_schema(self):
+         """Get the schema so far.

@@ -1,0 +1,8 @@
+def NewFromTrainingSet( cls, training_set ):
+ 		
+ 		from scipy import stats
+ 
+ 		matrix = training_set.data_matrix
+ 		#FIXME: maybe add some dummyproofing to constrain incoming array size
+ 
+ 		new_fw = cls()

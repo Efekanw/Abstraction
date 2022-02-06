@@ -1,0 +1,16 @@
+def handler(*args, **kwargs):
+                 if validators:
+                     for validator in validators:
+                         validator(**kwargs)
+             except jsonschema.ValidationError, e:
+                 e.code = "VALIDATION_ERROR"
+                 return u.bad_request(e)
+             except ex.SavannaException, e:
+                 return u.bad_request(e)
+             except os_ex.MalformedRequestBody, e:
+                 e.code = "MALFORMED_REQUEST_BODY"
+                 return u.bad_request(e)
+             except Exception, e:
+                 return u.internal_error(
+                     500, "Error occurred during validation", e)
+ 

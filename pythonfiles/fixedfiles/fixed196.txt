@@ -1,0 +1,7 @@
+def redisplay(self):
+ 		for ann in self.annDict.itervalues():
+ 			ann.draw()
+ 
+ 	def removeAnnotation(self, tag):
+ 		"""Remove all annotations (if any) with the specified tag.
+ 		"""

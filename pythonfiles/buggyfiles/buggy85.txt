@@ -1,0 +1,8 @@
+def get_resource_from_name(self, name, section_handle, type = None):
+         return self.__get_resource_from_query(select, type)
+ 
+ 
+     def get_resource_list_from_id_list(self, id_list, type = None):
+         assert id_list is not None
+         if len(id_list) == 0: return []
+         tbl_r  = self._table_map['resource']

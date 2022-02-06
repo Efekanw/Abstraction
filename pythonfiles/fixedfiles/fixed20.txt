@@ -1,0 +1,7 @@
+def write_pidfile():
+ 
+     open_logfile()
+ 
+     if options.profile:
+         import hotshot
+         hsp = hotshot.Profile(deluge.configmanager.get_config_dir("deluged.profile"))

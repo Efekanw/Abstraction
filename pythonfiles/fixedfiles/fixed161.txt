@@ -1,0 +1,14 @@
+def __init__(self,parent=None):
+         layout.addWidget(self.treeVariables,1,0)
+         layout.addWidget(self.figurepanel,1,1)
+         self.setLayout(layout)
+ 
+         self.figurepanel.figure.addDataSource('result',self.result)
+ 
+     def saveFigureSettings(self):
+         if self.varpath is not None and self.figurepanel.figure.hasChanged():
+             self.result.setFigure('result/'+self.varpath,self.figurepanel.figure.properties)
+ 
+     def OnVarSelected(self,*args):
+         selected = self.treeVariables.selectionModel().selectedIndexes()
+         if len(selected)==0: return

@@ -1,0 +1,5 @@
+def _postprocess_pdf_report(self, record, buffer):
+         # don't save the 'account.report_original_vendor_bill' report as it's just a mean to print existing attachments
+         if self.report_name == 'account.report_original_vendor_bill':
+             return None
+         return super(IrActionsReport, self)._postprocess_pdf_report(record, buffer)

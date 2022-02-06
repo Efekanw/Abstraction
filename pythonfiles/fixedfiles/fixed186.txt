@@ -1,0 +1,10 @@
+def test_fcntl_file_descriptor(self):
+         self.f.close()
+ 
+ 
+ def test_main():
+     run_unittest(TestFcntl)
+ 
+ if __name__ == '__main__':
+     test_main()
+ ++ b/Lib/test/test_ioctl.py

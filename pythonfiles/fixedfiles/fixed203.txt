@@ -1,0 +1,9 @@
+def doExpose(self, wdg=None):
+ 		
+ 	def doFindStars(self, *args):
+ 		if not self.dispImObj:
+ 			self.statusBar.setMsg("No guide image", severity = RO.Constants.sevWarning)
+ 			return
+ 
+ 		thresh = self.threshWdg.getNum()
+ 		

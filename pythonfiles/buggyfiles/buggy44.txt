@@ -1,0 +1,11 @@
+def _RequestWillBeSent(self, request_id, params):
+     # Several "requestWillBeSent" events can be dispatched in a row in the case
+     # of redirects.
+     redirect_initiator = None
+     if request_id in self._requests_in_flight:
+       redirect_initiator = self._HandleRedirect(request_id, params)
+     assert (request_id not in self._requests_in_flight
+             and request_id not in self._completed_requests_by_id)
+     r = Request()
+     r.request_id = request_id
+     _CopyFromDictToObject(

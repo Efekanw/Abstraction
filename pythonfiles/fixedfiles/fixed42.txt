@@ -1,0 +1,9 @@
+def update_from_datasource(self):
+             images = {'images': self.glance.images.list()}
+             self._translate_images(images)
+         except Exception as e:
+             raise e
+ 
+     @ds_utils.update_state_on_changed(IMAGES)
+     def _translate_images(self, obj):
+ ++ b/congress/datasources/heatv1_driver.py

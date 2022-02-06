@@ -1,0 +1,7 @@
+def load(fp, **kw):
+     json.dump = dump
+     json.load = load
+ 
+ LT_TORRENT_STATE = {
+     "Queued": 0,
+     "Checking": 1,

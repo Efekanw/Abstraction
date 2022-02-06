@@ -1,0 +1,14 @@
+def __init__(self, msg, data=None):
+     def serialize(self):
+         return self._header.serialize() + self.body.SerializeToString()
+ 
+     def __str__(self):
+         return '\n'.join(['MsgProto',
+                           '-' * 20,
+                           str(self.header),
+                           '-' * 20,
+                           str(self.body),
+                           ])
+ 
+ 
+ class ChannelEncryptRequest:

@@ -1,0 +1,7 @@
+def testRejectDuplicates(self):
+     with self.assertRaises(AssertionError):
+       self.request_track.Handle('Network.requestWillBeSent', msg)
+ 
+   def testSequenceOfGeneratedResponse(self):
+     self.request_track.Handle('Network.requestServedFromCache',
+                               RequestTrackTestCase._SERVED_FROM_CACHE)

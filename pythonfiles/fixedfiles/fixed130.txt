@@ -1,0 +1,10 @@
+def convert_to_date(x):
+         result = datetime.utcfromtimestamp(sec)
+     return result
+ 
+ def drop(x):
+     return None # causes 'x' to be ignored
+ 
+ def identity(x):
+     return x
+ 

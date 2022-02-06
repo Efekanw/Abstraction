@@ -1,0 +1,9 @@
+def _scan_ODMR_line(self):
+         '''
+         if self.stopRequested:
+             with self.threadlock:
+                 self.MW_off()
+                 self._MW_device.set_cw(f=self.MW_frequency,power=self.MW_power)
+                 self.kill_ODMR()
+                 self.stopRequested = False
+                 self.unlock()

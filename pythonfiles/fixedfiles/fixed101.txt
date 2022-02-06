@@ -1,0 +1,8 @@
+def status_as_dict(self, verbosity=1):
+         status = {"alive": self.alive}
+         if self.alive:
+             if verbosity == 1:
+                 # dont show spider settings
+                 status["running"] = []
+                 for proc in self.running:
+                     proccopy = proc.copy()

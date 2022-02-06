@@ -1,0 +1,36 @@
+def __init__(self, master, nodename):
+     def clientConnectionLost(self, *args, **kargs):
+         pb.PBClientFactory.clientConnectionLost(self, *args, **kargs)
+         del self.master.nodes[self.nodename]
+         log.msg("Lost connection to %s. Node removed" % self.nodename )
+ 
+ class ClusterMaster(object):
+ 
+     def __init__(self):
+ 
+         if not settings.getbool('CLUSTER_MASTER_ENABLED'):
+             raise NotConfigured
+         if not settings['CLUSTER_MASTER_STATEFILE']:
+             raise NotConfigured("ClusterMaster: Missing CLUSTER_MASTER_STATEFILE setting")
+ 
+         # import groups settings
+         if settings.getbool('GROUPSETTINGS_ENABLED'):
+             self.get_spider_groupsettings = my_import(settings["GROUPSETTINGS_MODULE"]).get_spider_groupsettings
+         else:
+             self.get_spider_groupsettings = lambda x: {}
+         # load pending domains
+         try:
+             statefile = open(settings["CLUSTER_MASTER_STATEFILE"], "r")
+             self.pending = pickle.load(statefile)
+         except IOError:
+             self.pending = []
+         self.loading = []
+         self.nodes = {}
+         self.start_time = datetime.datetime.utcnow()
+         # for more info about statistics see self.update_nodes() and ClusterMasterBroker.remote_update()
+         self.statistics = {"domains": {"running": set(), "scraped": {}, "lost_count": {}, "lost": set()}, "scraped_count": 0 }
+         self.global_settings = {}
+         # load cluster global settings
+         for sname in settings.getlist('GLOBAL_CLUSTER_SETTINGS'):
+             self.global_settings[sname] = settings[sname]
+         

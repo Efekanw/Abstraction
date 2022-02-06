@@ -1,0 +1,8 @@
+def doSelect(self, evt):
+ 			selStarData = None
+ 			minDistSq = _MaxDist
+ 			for typeChar, starDataList in self.dispImObj.starDataDict.iteritems():
+ #				print "doSelect checking typeChar=%r, nstars=%r" % (typeChar, len(starDataList))
+ 				tag, color = _TypeTagColorDict[typeChar]
+ 				for starData in starDataList:
+ 					distSq = (starData[2] - imPos[0])**2 + (starData[3] - imPos[1])**2

@@ -1,0 +1,7 @@
+def job(self, linedata):
+             self.log.debug('job', msg='Updating jobid: %s' % jid)
+             job.job_id = jid # set PK from cache for merge
+             job.merge_to_db(self.session)
+         pass
+         
+     def jobstate(self, linedata):

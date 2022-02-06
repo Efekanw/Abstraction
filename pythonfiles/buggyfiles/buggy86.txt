@@ -1,0 +1,9 @@
+def get_resource_list_from_id_list(self, id_list, type = None):
+             select = table.select(use_labels = True)
+         else:
+             select = table.select(where_clause, use_labels = True)
+         return self.__get_resource_from_query(select, type)
+         
+ 
+     def get_resource_children_from_id(self,
+ -- a/libs/libspiffextension_python/DB.py

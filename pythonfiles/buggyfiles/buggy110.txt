@@ -1,0 +1,8 @@
+def webconsole_control(self, wc_request, ws=False):
+                 domains = args["schedule"]
+             priority = int(args.get("priority", [DEFAULT_PRIORITY])[0])
+             
+             #spider settings
+             slist = args.get("settings", [""])[0].split(sep)
+             spider_settings = {}
+             for s in slist:

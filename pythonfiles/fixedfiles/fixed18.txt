@@ -1,0 +1,7 @@
+def start_ui():
+ 
+     version = deluge.common.get_version()
+ 
+     log.info("Deluge ui %s", version)
+     log.debug("options: %s", options)
+     log.debug("args: %s", args)

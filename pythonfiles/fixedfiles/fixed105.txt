@@ -1,0 +1,24 @@
+def _errback(_reason):
+         try:
+             reactor.connectTCP(server, port, factory)
+         except Exception, err:
+             log.msg("Could not connect to node %s in %s: %s." % (name, hostport, err), log.ERROR)
+         else:
+             def _errback(_reason):
+                 log.msg("Could not connect to remote node %s (%s): %s." % (name, hostport, _reason), log.ERROR)
+ 
+             d = factory.getRootObject()
+             d.addCallbacks(callback=lambda obj: self.add_node(obj, name), errback=_errback)
+ 
+     def update_nodes(self):
+         """Update worker nodes statistics"""
+         for name, hostport in settings.get('CLUSTER_MASTER_NODES', {}).iteritems():
+             if name in self.nodes and self.nodes[name].alive:
+                 log.msg("Updating node. name: %s, host: %s" % (name, hostport) )
+                 self.nodes[name].update_status()
+             else:
+                 log.msg("Reloading node. name: %s, host: %s" % (name, hostport) )
+                 self.load_node(name, hostport)
+         
+         real_running = set(self.running.keys())
+         lost = self.statistics["domains"]["running"].difference(real_running)

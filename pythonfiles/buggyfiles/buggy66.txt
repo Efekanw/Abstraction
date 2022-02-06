@@ -1,0 +1,4 @@
+def serialize(self):
+     def load(self, data):
+         (result,) = struct.unpack_from("<I", data)
+         self.result = EResult(result)

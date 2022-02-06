@@ -1,0 +1,8 @@
+def _LoadingFinished(self, request_id, params):
+     assert (status == RequestTrack._STATUS_RESPONSE
+             or status == RequestTrack._STATUS_DATA)
+     r.encoded_data_length = params['encodedDataLength']
+     assert (r.encoded_data_length > 0 or r.protocol == 'about' or
+             r.from_disk_cache or r.served_from_cache)
+     r.timing.loading_finished = r._TimestampOffsetFromStartMs(
+         params['timestamp'])

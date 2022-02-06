@@ -1,0 +1,8 @@
+def render_domains(self, wc_request):
+         s += "<input type='text' name='priority'>%s</input>" % DEFAULT_PRIORITY
+         s += "<br />\n"
+         
+         # spider settings
+         s += "Overrided spider settings:<br />\n"
+         s += "<textarea name='settings' rows='4'>\n"
+         s += "UNAVAILABLES_NOTIFY=2\n"

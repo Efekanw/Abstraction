@@ -1,0 +1,8 @@
+def SolutionImprovement(tolerance = 1e-5):
+ 
+ sum(abs(last_params - current_params)) <= tolerance"""
+     def _SolutionImprovement(inst):
+         update = inst.bestSolution - inst.trialSolution #XXX: if inf - inf ?
+         answer = numpy.add.reduce(abs(update)) <= tolerance
+         return answer
+     return _SolutionImprovement

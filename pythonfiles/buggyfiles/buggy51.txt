@@ -1,0 +1,8 @@
+def detect_extra_files(node, extra_files):
+       if contents is None:
+         return
+       else:
+         real_contents = svntest.main.file_read(os.path.join(wc_dir, node.path))
+         if real_contents == contents:
+           extra_files.pop(extra_files.index(fdata)) # delete pattern from list
+           return

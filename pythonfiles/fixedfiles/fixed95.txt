@@ -1,0 +1,54 @@
+def unregister_extension_test(self, db):
+             db.register_extension(extension)
+             assert db.unregister_extension(extension)
+             
+         def get_extension_test(self, db):
+             assert db.clear_database()
+             extension = Extension('Spiff')
+             extension.set_version('0.1')
+             db.register_extension(extension)
+ 
+             extension = Extension('Spiff')
+             extension.set_version('0.2')
+             extension.add_dependency('spiff=0.1')
+             db.register_extension(extension)
+ 
+             result = db.get_extension_from_id(extension.get_id())
+             assert result.get_handle()  == extension.get_handle()
+             assert result.get_version() == extension.get_version()
+             assert len(result.get_dependency_list()) == 1
+             assert result.get_dependency_list()[0]   == 'spiff=0.1'
+             
+             result = db.get_extension_from_handle('spiff', '0.2')
+             assert result.get_id() == extension.get_id()
+ 
+             result = db.get_extension_from_descriptor('spiff>=0.1')
+             assert result.get_id()      == extension.get_id()
+             assert result.get_handle()  == extension.get_handle()
+             assert result.get_version() == extension.get_version()
+ 
+             result = db.get_extension_from_descriptor('spiff=0.2')
+             assert result.get_id()      == extension.get_id()
+             assert result.get_handle()  == extension.get_handle()
+             assert result.get_version() == extension.get_version()
+ 
+             list = db.get_version_list_from_handle('spiff')
+             assert len(list) == 2
+             assert list[0].get_handle() == 'spiff'
+             assert list[1].get_handle() == 'spiff'
+ 
+         def callback_test(self, db):
+             assert db.clear_database()
+             extension = Extension('Spiff')
+             extension.set_version('0.1.2')
+             db.register_extension(extension)
+ 
+             callback = Callback('my_func_name', 'always')
+             assert db.link_extension_id_to_callback(extension.get_id(),
+                                                     callback)
+             #FIXME
+             
+ 
+         def runTest(self):
+             # Read config.
+             cfg = RawConfigParser()

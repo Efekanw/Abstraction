@@ -1,0 +1,11 @@
+def redisplay(self):
+ 		for ann in self.annDict.itervalues():
+ 			ann.draw()
+ 
+ 	def nullHandler(self, evt):
+ 		"""Ignore an event."""
+ 		return
+ 
+ 	def removeAnnotation(self, tag):
+ 		"""Remove all annotations (if any) with the specified tag.
+ 		"""

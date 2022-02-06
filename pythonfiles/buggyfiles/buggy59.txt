@@ -1,0 +1,21 @@
+def _heartbeat(self, interval):
+             self.send_message(message)
+ 
+     def _handle_logon(self, emsg, msg):
+         if msg.body.eresult == EResult.OK:
+             logger.debug("Logon completed")
+ 
+             self.steam_id = SteamID(msg.header.steamid)
+             self.session_id = msg.header.client_sessionid
+ 
+             self.cell_id = msg.body.cell_id
+             self.webapi_nonce = msg.body.webapi_authenticate_user_nonce
+ 
+             if self._heartbeat_loop:
+                 self._heartbeat_loop.kill()
+ 
+             logger.debug("Heartbeat started.")
+ 
+             interval = msg.body.out_of_game_heartbeat_seconds
+             self._heartbeat_loop = gevent.spawn(self._heartbeat, interval)
+ -- a/steam/client/msg.py

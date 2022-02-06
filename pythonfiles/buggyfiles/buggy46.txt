@@ -1,0 +1,8 @@
+def _ResponseReceived(self, request_id, params):
+       self.duplicates_count += 1
+       return
+     assert status == RequestTrack._STATUS_SENT
+     assert r.frame_id == params['frameId']
+     assert r.timestamp <= params['timestamp']
+     if r.resource_type == 'Other':
+       r.resource_type = params.get('type', 'Other')

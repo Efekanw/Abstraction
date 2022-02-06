@@ -1,0 +1,25 @@
+def __init__(self,conf):
+ 		self.db_conn.row_factory = sqlite3.Row
+ 		self.db_cur = self.db_conn.cursor()
+ 
+ 	def walkContentDir(self,dir):
+ 		for file in os.listdir(dir):
+ 			filename = "%s/%s" % (dir,file)
+ 			c = post(filepath=filename, db_cur=self.db_cur, db_conn=self.db_conn, conf=self.conf)
+ 			if c.handler:
+ 				print 'Parsing:', filename
+ 				if not c.in_db():
+ 					c.parse()
+ 					c.to_db()
+ 					c.render()
+ 			else:
+ 				if os.path.isdir(filename):
+ 					self.walkContentDir(filename)
+ 
+ 	def updPosts(self):
+ 		self.walkContentDir(self.conf['contentDir'])
+ 
+ 	def updIndex(self):
+ 		self.db_cur.execute("SELECT * FROM post ORDER BY cre_date DESC")
+ 		posts = []
+ ++ b/bucket3/post.py

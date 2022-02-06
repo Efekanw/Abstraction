@@ -1,0 +1,20 @@
+def checkBoardExists( self ):
+ 		
+ 
+ 	def deleted( self, *arg ):
+ 		self.close()
+ 
+ 
+ 	def close( self ):
+ 		if self.CloseOrder:
+ 			return
+ 		self.CloseOrder = True
+ 
+ 		if self.thePluginInstanceSelection != None:
+ 			self.thePluginInstanceSelection.deleted()
+ 			self.thePluginInstanceSelection = None
+ 		self.theSession.deleteEntityListWindow( self )
+ 		OsogoWindow.close(self)
+ 	
+ 	# ====================================================================
+ 	def deletePluginInstanceSelection( self, *arg ):

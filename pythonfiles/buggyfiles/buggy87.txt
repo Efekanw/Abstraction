@@ -1,0 +1,8 @@
+def __get_dependency_id_list_from_id(self, extension_id):
+ 
+         dependency_id_list = []
+         for row in result:
+             dependency_id_list.append(row[table.c.extension_id])
+         return dependency_id_list
+ 
+ 

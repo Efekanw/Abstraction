@@ -1,0 +1,14 @@
+def load(fp, **kw):
+     json.dump = dump
+     json.load = load
+ 
+ import pkg_resources
+ import gettext
+ import locale
+ import sys
+ 
+ from deluge.error import *
+ 
+ LT_TORRENT_STATE = {
+     "Queued": 0,
+     "Checking": 1,

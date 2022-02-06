@@ -1,0 +1,12 @@
+def __init__(self,parent=None):
+         layout.addWidget(self.treeVariables,1,0)
+         layout.addWidget(self.figurepanel,1,1)
+         self.setLayout(layout)
+         
+         self.defaultfigures = parent.settings.root['FigureSettings']
+ 
+         self.figurepanel.figure.addDataSource('result',self.result)
+ 
+     def OnVarSelected(self,*args):
+         selected = self.treeVariables.selectionModel().selectedIndexes()
+         if len(selected)==0: return

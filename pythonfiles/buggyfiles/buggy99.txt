@@ -1,0 +1,8 @@
+def __init__(self):
+         reactor.connectTCP("localhost", settings.getint('CLUSTER_WORKER_PORT'), factory)
+         d = factory.getRootObject()
+         def _set_worker(obj):
+             self.worker = Broker(self, obj)
+         d.addCallbacks(callback=_set_worker, errback=lambda reason: log.msg(reason, log.ERROR))
+         
+ -- a/scrapy/branches/cluster-refactor/scrapy/contrib/pbcluster/master/manager.py

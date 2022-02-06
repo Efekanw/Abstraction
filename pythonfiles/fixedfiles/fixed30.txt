@@ -1,0 +1,8 @@
+def createAllResponseChart(self):
+         # data
+         lines = ["CUs RPS ERROR MIN AVG MAX P10 P50 P90 P95"]
+         cvus = []
+         has_error = False
+         for cycle in self.cycles:
+             if not stats[cycle].has_key('response'):
+                 continue

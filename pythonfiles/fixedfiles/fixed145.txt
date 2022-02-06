@@ -1,0 +1,9 @@
+def main():
+     Process VCF files and merge them into a single fasta file.
+     """
+ 
+     logging.basicConfig(level=logging.INFO)
+ 
+     args = get_args()
+     contigs = list()
+ 

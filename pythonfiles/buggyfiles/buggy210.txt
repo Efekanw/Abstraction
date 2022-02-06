@@ -1,0 +1,9 @@
+def updStar(self, starData, isCurrent, keyVar):
+ 		Replace existing centroid data if I generated the command,
+ 		else ignore.
+ 		"""
+ 		print "%s updStar(starData=%r, isCurrent=%r)" % (self.actor, starData, isCurrent)
+ 		if not isCurrent:
+ 			return
+ 
+ -- a/TUI/Help/VersionHistory.html

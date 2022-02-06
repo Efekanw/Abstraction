@@ -1,0 +1,21 @@
+def host(self, linedata):
+         self.mapHostToJob(host)
+         pass
+         
+     def edge_static(self, linedata):
+         """
+         @type   linedata: dict
+         @param  linedata: One line of BP data dict-ified.
+         
+         Handles a static edge insert event.
+         """
+         edge = self.linedataToObject(linedata, EdgeStatic())
+         del edge.ts, edge.event
+         
+         self.log.debug('edge_static', msg=edge)
+         edge.commit_to_db(self.session)
+         pass
+         
+     def noop(self, linedata):
+         """
+         @type   linedata: dict

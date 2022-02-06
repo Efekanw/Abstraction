@@ -1,0 +1,13 @@
+def __get_resource_from_row(self, row, type = None):
+         return resource
+ 
+ 
+     def __get_resource_from_query(self, query, type = None, always_list = False):
+         """
+         May return a resource list, a single resource, or None.
+         If always_list is True, a list is returned even if only a single
+         result was produced.
+         """
+         assert query is not None
+         result = query.execute()
+         assert result is not None

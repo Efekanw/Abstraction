@@ -1,0 +1,6 @@
+def ws_status(self, wc_request, verbosity=1):
+     def ws_statistics(self, wc_request):
+         format = wc_request.args['format'][0] if 'format' in wc_request.args else 'json'
+         content = serialize(self.statistics, format)
+         return content
+ -- a/scrapy/branches/cluster-refactor/scrapy/contrib/pbcluster/worker/manager.py

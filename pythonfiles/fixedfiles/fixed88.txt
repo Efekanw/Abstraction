@@ -1,0 +1,37 @@
+def __get_dependency_id_list(self, extension):
+         return self.__get_dependency_id_list_from_id(extension.get_id())
+ 
+ 
+     def __get_dependency_descriptor_list_from_id(self, extension_id):
+         assert extension_id >= 0
+         table  = self._table_map['extension_dependency']
+         query  = select([table.c.dependency_handle,
+                          table.c.dependency_operator,
+                          table.c.dependency_version],
+                         table.c.extension_id == extension_id,
+                         from_obj = [table])
+         result = query.execute()
+         assert result is not None
+ 
+         dependency_list = []
+         for row in result:
+             handle   = row[table.c.dependency_handle]
+             operator = row[table.c.dependency_operator]
+             version  = row[table.c.dependency_version]
+             dependency_list.append(handle + operator + version)
+         return dependency_list
+ 
+ 
+     def __get_dependency_descriptor_list(self, extension):
+         assert extension is not None
+         return self.__get_dependency_descriptor_list_from_id(extension.get_id())
+ 
+ 
+     def __load_dependency_descriptor_list(self, extension):
+         assert extension is not None
+         list = self.__get_dependency_descriptor_list(extension)
+         for dependency in list:
+             extension.add_dependency(dependency)
+         return True
+ 
+ 

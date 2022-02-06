@@ -1,0 +1,8 @@
+def __init__(self, ofile=None, units=None):
+     def reset(self, n):
+         pass
+     
+     def advance(self, num=0):
+         pass
+ 
+ def mostRecentFile(dir, file_pattern, after_time=None):

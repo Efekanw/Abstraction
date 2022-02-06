@@ -1,0 +1,8 @@
+def get_git_version(abbrev=4):
+  
+     if version is None:
+         # raise ValueError("Cannot find the version number!")
+         version = '0.1.0'
+         source_hash = ''
+  
+     # If the current version is different from what's in the

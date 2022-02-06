@@ -1,0 +1,7 @@
+def single_file_replace_style_merge_capability(sbox):
+               update_loses_mergeinfo,
+               merge_loses_mergeinfo,
+               single_file_replace_style_merge_capability,
+              ]
+ 
+ if __name__ == '__main__':

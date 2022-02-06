@@ -1,0 +1,11 @@
+def getFitZoomFac(self):
+ 	
+ 	def isNormalMode(self):
+ 		return self.mode == _ModeNormal
+ 
+ 	def nullHandler(self, evt):
+ 		"""Ignore an event."""
+ 		return
+ 	
+ 	def redisplay(self):
+ 		"""Starting from the data array, redisplay the data.

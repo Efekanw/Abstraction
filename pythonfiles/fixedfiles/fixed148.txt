@@ -1,0 +1,8 @@
+def main():
+                 if record.FILTER == "PASS" or not record.FILTER:
+                     if record.is_snp:
+                         if len(record.ALT) > 1:
+                             logging.info("POS %s passed filters but has multiple alleles. Inserting N")
+                             all_data[record.CHROM][sample_name][record.POS] = "N"
+                         else:
+                             all_data[record.CHROM][sample_name][record.POS] = record.ALT[0].sequence
